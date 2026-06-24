@@ -114,7 +114,13 @@
   .mockups .eyebrow{color:var(--gold);}
   .mockups h2{color:var(--paper);font-size:clamp(24px,3.4vw,32px);max-width:540px;margin:0 0 12px;}
   .mockups p.intro{color:rgba(246,239,227,0.78);max-width:520px;font-size:16.5px;margin:0 0 44px;}
-  .mockup-stack{display:flex;flex-direction:column;gap:24px;  align-items:flex-start;}
+ .mockup-stack{
+    display:grid;
+    grid-template-columns:340px 360px;
+    gap:28px;
+    justify-content:center;
+    align-items:start;
+}
   .mockup-main{
     width:100%;max-width:300px;
     border-radius:18px;overflow:hidden;
@@ -507,7 +513,13 @@
 
     /* Mockups */
     .mockup-main{max-width:260px;}
-    .mockup-bonuses{max-width:260px;}
+    .mockup-bonuses{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+    width:100%;
+    max-width:360px;
+}
 
     /* Benefits */
     .benefits h2{margin-bottom:36px;}
