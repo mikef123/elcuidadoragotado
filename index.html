@@ -114,12 +114,13 @@
   .mockups .eyebrow{color:var(--gold);}
   .mockups h2{color:var(--paper);font-size:clamp(24px,3.4vw,32px);max-width:540px;margin:0 0 12px;}
   .mockups p.intro{color:rgba(246,239,227,0.78);max-width:520px;font-size:16.5px;margin:0 0 44px;}
-  .mockup-stack{display:flex;flex-direction:column;align-items:center;gap:20px;}
+  .mockup-stack{display:flex;flex-direction:column;gap:24px;  align-items:flex-start;}
   .mockup-main{
     width:100%;max-width:300px;
     border-radius:18px;overflow:hidden;
     box-shadow:0 40px 70px -20px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.08);
     position:relative;
+    transform:scale(1.12);
   }
   .mockup-main img{width:100%;height:auto;display:block;border-radius:18px;}
   .mockup-main .main-label{
@@ -182,6 +183,8 @@
   .mockup-note{
     text-align:center;font-size:13.5px;color:rgba(246,239,227,0.55);
     font-style:italic;margin-top:22px;max-width:420px;
+    margin-top:30px;
+
   }
   /* Desktop: mostrar main + bonuses lado a lado */
   @media(min-width:640px){
