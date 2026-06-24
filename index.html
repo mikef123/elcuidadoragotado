@@ -218,7 +218,11 @@
   @media(min-width:640px){
     .mockup-stack{flex-direction:row;align-items:flex-start;justify-content:center;gap:28px;}
     .mockup-main{max-width:260px;}
-    .mockup-bonuses{max-width:260px;}
+      .mockup-bonuses {
+        max-width: 360px;
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
   }
 
   /* ============ BENEFITS ============ */
@@ -512,11 +516,11 @@
     .solution .promise{font-size:18px;margin-top:24px;}
 
     /* Mockups */
-    .mockup-main{max-width:260px;}
+    .mockup-main{transform:scale(1.12);}
     .mockup-bonuses{
     display:grid;
     grid-template-columns:repeat(2,1fr);
-    gap:16px;
+    gap:20px;
     width:100%;
     max-width:360px;
 }
