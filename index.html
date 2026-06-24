@@ -129,18 +129,19 @@
     font-family:'Fraunces',serif;font-size:11px;letter-spacing:0.04em;
     padding:4px 12px;border-radius:20px;
   }
-.mockup-bonuses{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:16px;
-    width:100%;
-    max-width:360px;
+
+  .mockup-main{
+    transform:scale(1.08);
 }
-  .mockup-bonus{
+.mockup-bonus{
     position:relative;
     border-radius:18px;
     overflow:hidden;
     min-height:230px;
+
+    box-shadow:
+    0 14px 30px -8px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(255,255,255,0.06);
 }
 
 .mockup-bonus img{
@@ -156,7 +157,13 @@
     right:10px;
     bottom:10px;
 
-    background:rgba(22,40,58,.88);
+    min-height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(22,40,58,.92);
     backdrop-filter:blur(8px);
 
     padding:10px 12px;
@@ -164,28 +171,43 @@
 
     color:#fff;
     font-family:'Fraunces', serif;
-    font-size:14px;
-    line-height:1.3;
+    font-size:13px;
+    line-height:1.25;
     text-align:center;
 }
-  .mockup-main{
-    transform:scale(1.08);
-}
-  .mockup-bonus{border-radius:12px;overflow:hidden;box-shadow:0 14px 30px -8px rgba(0,0,0,0.55),0 0 0 1px rgba(255,255,255,0.06);position:relative;}
-  .mockup-bonus img{width:100%;height:auto;display:block;border-radius:12px;}
-  .mockup-bonus .bonus-label{
-    position:absolute;bottom:7px;left:7px;
-    background:rgba(22,40,58,0.88);
-    color:var(--terracotta-soft);
-    font-family:'Lora',serif;font-size:10px;font-style:italic;
-    padding:3px 9px;border-radius:16px;
-  }
   .mockup-note{
     text-align:center;font-size:13.5px;color:rgba(246,239,227,0.55);
     font-style:italic;margin-top:22px;max-width:420px;
     margin-top:30px;
 
   }
+
+  .mockups .container{
+    text-align:center;
+}
+
+.mockups h2{
+    color:var(--paper);
+    font-size:clamp(24px,3.4vw,32px);
+    max-width:620px;
+    margin:0 auto 12px;
+}
+
+.mockups p.intro{
+    color:rgba(246,239,227,0.78);
+    max-width:620px;
+    font-size:16.5px;
+    margin:0 auto 44px;
+}
+
+.mockup-note{
+    text-align:center;
+    font-size:13.5px;
+    color:rgba(246,239,227,0.55);
+    font-style:italic;
+    max-width:500px;
+    margin:30px auto 0;
+}
   /* Desktop: mostrar main + bonuses lado a lado */
   @media(min-width:640px){
     .mockup-stack{flex-direction:row;align-items:flex-start;justify-content:center;gap:28px;}
