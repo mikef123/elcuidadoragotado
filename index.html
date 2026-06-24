@@ -503,7 +503,53 @@
 
     /* Show sticky CTA */
     .sticky-cta{display:block;}
+
+    /* Guarantee box */
+    .guarantee-box{padding:22px 18px;border-radius:14px;}
+    .guarantee-box .shield{font-size:32px;}
+    .guarantee-box h4{font-size:16px;}
+    .guarantee-box p{font-size:14px;}
+
+    /* Pay secure */
+    .pay-secure{font-size:11.5px;}
   }
+
+  /* ============ GUARANTEE BOX ============ */
+  .guarantee-box{
+    background:rgba(255,255,255,0.06);
+    border:1.5px solid rgba(201,163,91,0.38);
+    border-radius:18px;padding:30px 26px;
+    margin:28px auto 0;max-width:500px;text-align:center;
+  }
+  .guarantee-box .shield{font-size:42px;display:block;margin-bottom:12px;line-height:1;}
+  .guarantee-box h4{
+    font-family:'Fraunces',serif;color:var(--paper);
+    font-size:19px;margin:0 0 10px;font-weight:500;letter-spacing:-0.01em;
+  }
+  .guarantee-box p{
+    color:rgba(246,239,227,0.82);font-size:15px;
+    font-style:italic;margin:0;line-height:1.7;
+  }
+
+  /* ============ PAYMENT SECURITY ============ */
+  .pay-secure{
+    margin-top:12px;font-size:12px;text-align:center;
+    color:rgba(246,239,227,0.45);letter-spacing:0.02em;
+    font-family:'Lora',serif;line-height:1.6;
+  }
+  .pay-secure .lock-icon{margin-right:3px;}
+  .pay-secure.light{color:rgba(46,42,36,0.4);}
+
+  /* ============ AUTHOR CREDENTIAL TAG ============ */
+  .author-credential{
+    display:flex;align-items:flex-start;gap:10px;
+    background:linear-gradient(135deg,rgba(196,106,75,0.07),rgba(201,163,91,0.07));
+    border:1px solid rgba(196,106,75,0.22);
+    border-radius:12px;padding:14px 18px;
+    margin-top:24px;text-align:left;
+    font-size:14.5px;color:var(--navy);line-height:1.55;
+  }
+  .author-credential .chk{color:var(--sage);font-size:17px;flex:none;line-height:1.5;}
 </style>
 </head>
 <body>
@@ -518,8 +564,9 @@
     <h1>Si cuidas a un padre, una madre, un esposo o un familiar enfermo<br>y sientes que <em>te estás perdiendo en el proceso</em>, este sistema fue creado para ti.</h1>
     <p class="sub">No estás fallando. Estás agotada. Y existe una diferencia enorme entre las dos cosas — aunque nadie te lo haya dicho todavía.</p>
     <a href="https://payhip.com/b/tODM0" class="btn">Sí, quiero dejar de cargar esto sola</a>
+    <div class="pay-secure"><span class="lock-icon">🔒</span> Pago 100% seguro &nbsp;·&nbsp; Visa &nbsp;·&nbsp; Mastercard &nbsp;·&nbsp; PayPal &nbsp;·&nbsp; Stripe</div>
 
-    <!-- CAMBIO 1: Banda de reducción de riesgo -->
+    <!-- Trust band -->
     <div class="trust-band">
       <span><em class="check">✓</em> Acceso digital inmediato</span>
       <span><em class="check">✓</em> Garantía de devolución de 14 días</span>
@@ -802,7 +849,7 @@
 </section>
 
 <!-- ====================================================
-     CAMBIO 5: QUIÉN ESTÁ DETRÁS
+     QUIÉN ESTÁ DETRÁS
      ==================================================== -->
 <section class="author">
   <div class="container fade-in">
@@ -812,16 +859,20 @@
 
     <div class="author-card">
       <div class="author-photo">
-        <!-- Reemplazar con: <img src="author-photo.jpg" alt="[Nombre del autor/a]"> -->
-        <span class="initials">✦</span>
+        <!-- Reemplazar con tu foto real: <img src="author-photo.jpg" alt="Vanessa Umaña, Psicóloga"> -->
+        <span class="initials">VU</span>
       </div>
-      <div class="author-name">[Tu nombre completo]</div>
-      <div class="author-role">[Tu rol, especialidad o credencial]</div>
+      <div class="author-name">Vanessa Umaña</div>
+      <div class="author-role">Psicóloga</div>
       <div class="author-bio">
-        <p>[Aquí va tu historia personal. Comparte qué te llevó a crear este sistema — una experiencia propia como cuidadora, un familiar cercano que atravesó esta situación, o años acompañando a mujeres en este camino. Cuanto más específica y honesta sea tu historia, más conectará con quien la lea.]</p>
-        <p>[Menciona tu formación o experiencia si es relevante — no para impresionar, sino para explicar por qué tienes algo valioso que ofrecer. Las cuidadoras no buscan un experto distante; buscan a alguien que entiende lo que viven.]</p>
-        <p>[Cierra con el momento exacto en que decidiste que este sistema tenía que existir. Esa escena concreta — la frase que alguien te dijo, el momento en que viste a una mujer quebrarse, la noche que tú misma tocaste fondo — es lo que hace que esta sección sea memorable.]</p>
-        <p class="author-quote">"[Una frase corta que capture tu filosofía o motivación — en primera persona, en tono íntimo.]"</p>
+        <p>Durante años he acompañado a personas y familias que atraviesan procesos de enfermedad, dependencia y cambios profundos en sus vidas. En ese camino comprendí una realidad que se repite una y otra vez: las cuidadoras suelen ser las últimas en recibir apoyo, a pesar de ser quienes sostienen gran parte del peso emocional del cuidado.</p>
+        <p>Muchas mujeres pasan meses — e incluso años — cuidando de quienes aman mientras silenciosamente dejan de cuidarse a sí mismas. Este sistema nació precisamente para ofrecer ese espacio de apoyo emocional que tantas cuidadoras nunca reciben.</p>
+        <p>Mi intención con este recurso es ayudarte a sentirte acompañada, comprendida y menos sola en este proceso, a través de herramientas sencillas, humanas y realistas que respetan la realidad de quienes cuidan cada día.</p>
+        <p class="author-quote">"Las cuidadoras no necesitan que les digan que son fuertes. Necesitan que alguien, por fin, las cuide a ellas."</p>
+      </div>
+      <div class="author-credential">
+        <span class="chk">✓</span>
+        <span>Contenido revisado desde una perspectiva profesional de salud emocional.</span>
       </div>
     </div>
   </div>
@@ -913,14 +964,20 @@
 
     <p style="color:rgba(246,239,227,0.72);font-size:15px;font-style:italic;max-width:480px;margin:0 auto 32px;">Una sola sesión de terapia puede costar entre $100 y $200. Este sistema estará contigo cada vez que lo necesites — no una hora, sino siempre que lo abras.</p>
 
-    <!-- CTA con precio (CAMBIO 3) -->
+    <!-- CTA con precio -->
     <a href="https://payhip.com/b/tODM0" class="btn">Sí, quiero empezar hoy — $27 USD</a>
+    <div class="pay-secure"><span class="lock-icon">🔒</span> Pago 100% seguro &nbsp;·&nbsp; Visa &nbsp;·&nbsp; Mastercard &nbsp;·&nbsp; PayPal &nbsp;·&nbsp; Stripe</div>
     <div class="cta-micro">
       <span class="l1">Acceso inmediato a los 5 recursos digitales</span>
       <span class="l2">Recíbelos en tu correo en menos de 2 minutos</span>
     </div>
-    <p class="guarantee">Acceso inmediato + garantía de devolución de 14 días</p>
-    <span class="guarantee-strong">Si en 14 días sientes que este sistema no es para ti, escríbenos y te devolvemos tu dinero. Sin preguntas.</span>
+
+    <!-- GARANTÍA VISUAL DESTACADA -->
+    <div class="guarantee-box">
+      <span class="shield">🛡️</span>
+      <h4>Garantía de satisfacción de 14 días</h4>
+      <p>"Prueba el sistema durante 14 días. Si sientes que este recurso no es para ti, solo escríbenos y te devolveremos cada centavo. Sin preguntas incómodas."</p>
+    </div>
   </div>
 </section>
 
@@ -953,8 +1010,8 @@
     <span class="eyebrow">Antes de irte, recuerda esto</span>
     <h2>Has pasado tanto tiempo preguntando <em>"¿cómo está él? ¿cómo está ella?"</em><br>Hoy alguien te pregunta a ti: ¿cómo estás tú?</h2>
     <p>No tienes que cargarlo sola. No tienes que esperar a derrumbarte para merecer ayuda. Mereces cuidado hoy, no solo cuando ya no puedas más.</p>
-    <!-- CAMBIO 3: CTA final con precio -->
     <a href="https://payhip.com/b/tODM0" class="btn">Sí, quiero empezar hoy — $27 USD</a>
+    <div class="pay-secure light"><span class="lock-icon">🔒</span> Pago 100% seguro &nbsp;·&nbsp; Visa &nbsp;·&nbsp; Mastercard &nbsp;·&nbsp; PayPal &nbsp;·&nbsp; Stripe</div>
     <span class="cta-guarantee">Acceso inmediato + garantía de devolución de 14 días</span>
     <div class="sign">Con cariño, para todas las que cuidan sin que nadie las cuide a ellas.</div>
   </div>
