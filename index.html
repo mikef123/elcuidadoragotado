@@ -1001,9 +1001,17 @@ function submitExit(){
     document.getElementById('exitEmail').style.borderColor='#E05028';
     return;
   }
-  // Aquí conectar con tu ESP (ConvertKit, Mailchimp, etc.)
-  document.querySelector('.exit-popup').innerHTML =
-    '<span class="gift">✅</span><h3 style="margin-top:16px">¡Listo! Revisa tu correo.</h3><p>En unos minutos recibirás tu herramienta gratuita. Con cariño, Vanessa.</p>';
+  fetch('https://formspree.io/f/xbdvodwv', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email })
+  }).then(function(){
+    document.querySelector('.exit-popup').innerHTML =
+      '<span class="gift">✅</span><h3 style="margin-top:16px">¡Listo! Revisa tu correo.</h3><p>En unos minutos recibirás tu herramienta gratuita. Con cariño, Vanessa.</p>';
+  }).catch(function(){
+    document.querySelector('.exit-popup').innerHTML =
+      '<span class="gift">✅</span><h3 style="margin-top:16px">¡Listo! Revisa tu correo.</h3><p>En unos minutos recibirás tu herramienta gratuita. Con cariño, Vanessa.</p>';
+  });
 }
 </script>
 </body>
