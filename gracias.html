@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>¡Gracias por tu compra! — El Cuidador Agotado</title>
 
-  <!-- Meta Pixel: dispara evento Purchase al cargar esta página -->
+  <!-- Meta Pixel: dispara Purchase al cargar esta página -->
   <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -25,7 +25,6 @@
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1567677244706210&ev=Purchase&noscript=1"
   /></noscript>
-  <!-- End Meta Pixel Code -->
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,9 +55,22 @@
       color: #5a4a40;
       margin-bottom: 1rem;
     }
-    .note {
+    .btn {
+      display: inline-block;
       margin-top: 2rem;
-      font-size: 0.9rem;
+      padding: 0.9rem 2rem;
+      background-color: #7a5c4e;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-family: Georgia, serif;
+      transition: background 0.2s;
+    }
+    .btn:hover { background-color: #5a3e32; }
+    .note {
+      margin-top: 1.5rem;
+      font-size: 0.88rem;
       color: #8a7a70;
     }
   </style>
@@ -66,10 +78,12 @@
 <body>
   <div class="card">
     <div class="emoji">🌿</div>
-    <h1>Tu kit está en camino.<br>Hiciste algo importante hoy.</h1>
-    <p>Revisa tu correo electrónico — ahí encontrarás el enlace para descargar tus 5 recursos.</p>
+    <h1>Tu kit está listo.<br>Hiciste algo importante hoy.</h1>
     <p>Gracias por elegir cuidarte mientras cuidas a otros.</p>
-    <p class="note">Si no ves el correo en los próximos minutos, revisa la carpeta de spam.</p>
+    <a class="btn" href="https://app.lemonsqueezy.com/my-orders" target="_blank">
+      Acceder a mis recursos →
+    </a>
+    <p class="note">¿Problemas para acceder? Escríbenos y te ayudamos.</p>
   </div>
 </body>
 </html>
