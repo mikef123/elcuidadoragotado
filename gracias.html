@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¡Gracias por tu compra! — El Cuidador Agotado</title>
+
+  <!-- Meta Pixel: dispara evento Purchase al cargar esta página -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1567677244706210');
+  fbq('track', 'PageView');
+  fbq('track', 'Purchase', {
+    value: 27.00,
+    currency: 'USD'
+  });
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1567677244706210&ev=Purchase&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Georgia, serif;
+      background-color: #fdf9f5;
+      color: #3a2e28;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .card {
+      max-width: 560px;
+      text-align: center;
+    }
+    .emoji { font-size: 3rem; margin-bottom: 1.5rem; }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: normal;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #5a4a40;
+      margin-bottom: 1rem;
+    }
+    .note {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #8a7a70;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="emoji">🌿</div>
+    <h1>Tu kit está en camino.<br>Hiciste algo importante hoy.</h1>
+    <p>Revisa tu correo electrónico — ahí encontrarás el enlace para descargar tus 5 recursos.</p>
+    <p>Gracias por elegir cuidarte mientras cuidas a otros.</p>
+    <p class="note">Si no ves el correo en los próximos minutos, revisa la carpeta de spam.</p>
+  </div>
+</body>
+</html>
