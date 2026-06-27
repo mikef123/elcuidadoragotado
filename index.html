@@ -411,6 +411,12 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1567677244706210');
 fbq('track', 'PageView');
+fbq('track', 'ViewContent', {
+  content_name: 'El Cuidador Agotado',
+  content_category: 'Infoproducto',
+  value: 17.00,
+  currency: 'USD'
+});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"
@@ -930,6 +936,20 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"
 </div>
 
 <script>
+// ============ INITIATECHECKOUT — todos los CTAs ============
+(function(){
+  var ctaUrl = 'https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57';
+  document.querySelectorAll('a[href="' + ctaUrl + '"]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      fbq('track', 'InitiateCheckout', {
+        value: 17.00,
+        currency: 'USD',
+        num_items: 1
+      });
+    });
+  });
+})();
+
 // ============ COUNTDOWN TIMER ============
 (function(){
   var deadline = new Date('2026-07-03T23:59:00');
@@ -1006,9 +1026,11 @@ function submitExit(){
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email: email })
   }).then(function(){
+    fbq('track', 'Lead', { content_name: 'Kit de Emergencia Emocional' });
     document.querySelector('.exit-popup').innerHTML =
       '<span class="gift">✅</span><h3 style="margin-top:16px">¡Listo! Revisa tu correo.</h3><p>En unos minutos recibirás tu herramienta gratuita. Con cariño, Vanessa.</p>';
   }).catch(function(){
+    fbq('track', 'Lead', { content_name: 'Kit de Emergencia Emocional' });
     document.querySelector('.exit-popup').innerHTML =
       '<span class="gift">✅</span><h3 style="margin-top:16px">¡Listo! Revisa tu correo.</h3><p>En unos minutos recibirás tu herramienta gratuita. Con cariño, Vanessa.</p>';
   });
