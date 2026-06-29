@@ -137,6 +137,23 @@ a{color:inherit;}
 .email-form button{background:var(--navy-deep);color:var(--paper);font-family:'Fraunces',serif;font-size:15px;padding:13px 20px;border-radius:10px;border:none;cursor:pointer;white-space:nowrap;}
 .email-skip{display:block;margin-top:12px;font-size:12px;color:var(--ink);opacity:0.4;cursor:pointer;font-style:italic;}
 
+/* ── RESULT CLEAN (new) ── */
+.result-truth{font-family:'Fraunces',serif;font-style:italic;font-size:18px;color:var(--navy);background:var(--cream-deep);border-left:3px solid var(--cta);padding:15px 20px;border-radius:0 12px 12px 0;max-width:500px;margin:0 auto 28px;text-align:left;line-height:1.65;}
+.result-benefits{list-style:none;max-width:440px;margin:0 auto 32px;text-align:left;padding:0;}
+.result-benefits li{display:flex;align-items:flex-start;gap:12px;font-size:16px;color:var(--ink);margin-bottom:13px;line-height:1.55;}
+.result-benefits li:last-child{margin-bottom:0;}
+.result-benefits li .ck{flex:none;width:20px;height:20px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;margin-top:2px;}
+.result-bridge-phrase{font-family:'Fraunces',serif;font-size:clamp(18px,3vw,22px);color:var(--navy-deep);margin:0 auto 28px;max-width:460px;line-height:1.45;text-align:center;}
+.result-bridge-phrase em{font-style:italic;color:var(--cta);}
+.email-section-soft{background:transparent;border:1px dashed rgba(46,42,36,0.18);border-radius:14px;padding:22px 20px;margin:28px auto 0;max-width:460px;text-align:center;}
+.email-section-soft p{font-size:14px;color:var(--ink);opacity:0.6;margin-bottom:14px;font-style:italic;line-height:1.55;}
+.email-section-soft .email-form{max-width:340px;}
+.email-section-soft .email-skip{font-size:12px;opacity:0.35;}
+/* micro-reset inline — respiro antes del CTA */
+.result-micro{font-family:'Fraunces',serif;font-style:italic;font-size:16px;color:var(--sage);text-align:center;margin:0 auto 22px;max-width:400px;opacity:0.88;}
+/* product line — qué recibo, una sola línea */
+.result-product-line{font-size:13px;color:var(--navy);opacity:0.55;text-align:center;margin:10px auto 22px;letter-spacing:0.02em;font-style:italic;}
+
 /* ── FADE TRANSITIONS ── */
 .screen,.micro-wrap,.loading-wrap{animation:fadeIn 0.4s ease;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
@@ -375,56 +392,31 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"/></
     <div class="result-wrap">
       <div class="result-badge badge-1">🌱 Agotamiento Inicial</div>
 
-      <h2 class="result-title">"Estás en las etapas tempranas. Y ese es exactamente el mejor momento para actuar."</h2>
+      <h2 class="result-title">Todavía estás a tiempo.<br>Y eso importa más de lo que crees.</h2>
 
-      <p class="result-body">Todavía tienes recursos. Todavía puedes reconocer lo que sientes. Pero las señales ya están ahí — la culpa que aparece cuando descansas, el cansancio que se acumula sin salida, la sensación de que algo no está bien aunque no sepas exactamente qué.</p>
+      <p class="result-body">Las señales ya están ahí. No es exageración — es tu cuerpo diciéndote que el peso existe, aunque todavía lo estés manejando.</p>
 
-      <p class="result-body">Las cuidadoras que actúan en esta etapa evitan el colapso. Las que esperan suelen buscar ayuda cuando ya están en crisis — y en ese punto, salir cuesta el doble.</p>
+      <div class="result-truth">"Las cuidadoras que actúan en este momento evitan el colapso. Las que esperan llegan cuando ya están en crisis."</div>
 
-      <div class="result-divider"></div>
+      <ul class="result-benefits">
+        <li><span class="ck">✓</span><span>Descansar sin que la culpa lo arruine</span></li>
+        <li><span class="ck">✓</span><span>Tener palabras para lo que sientes — y eso ya alivia</span></li>
+        <li><span class="ck">✓</span><span>Cuidar mejor porque primero te cuidas tú</span></li>
+      </ul>
 
-      <!-- MICRO RESET -->
-      <div class="micro-reset">
-        <p>Respira. Lo que sientes tiene nombre. Y tiene salida.<span>Reconocerlo ya es el primer paso.</span></p>
-      </div>
+      <p class="result-micro">Respira. Lo que sientes tiene nombre. Y tiene salida.</p>
 
-      <!-- BRIDGE -->
-      <div class="result-bridge">
-        <span class="bridge-eyebrow">Pero no tienes que seguir así</span>
-        <h3>Todavía estás a tiempo de elegir diferente</h3>
-        <ul>
-          <li><span class="ck">✓</span><span>Aprender a descansar sin que la culpa te aplaste</span></li>
-          <li><span class="ck">✓</span><span>Tener palabras para lo que sientes — y eso ya alivia</span></li>
-          <li><span class="ck">✓</span><span>Cuidar mejor a quien amas porque primero te cuidas tú</span></li>
-        </ul>
-      </div>
+      <p class="result-bridge-phrase">No tienes que esperar a llegar al límite.<br><em>Puedes empezar hoy.</em></p>
 
-      <!-- PRODUCT -->
-      <div class="product-box">
-        <span class="pb-eyebrow">El sistema creado para este momento</span>
-        <h3>El Cuidador Agotado</h3>
-        <p>5 recursos de apoyo emocional diseñados por psicóloga clínica para cuidadoras como tú. Para los momentos difíciles — los que nadie más ve.</p>
-        <div class="price"><span class="curr">$</span>17</div>
-        <div class="price-note">USD · Acceso inmediato · Garantía 14 días</div>
-      </div>
+      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Empieza hoy — $17</a>
+      <p class="result-product-line">5 recursos de apoyo emocional · Psicóloga Clínica Vanessa Umaña · Acceso en menos de 2 minutos</p>
+      <span class="pay-note">🔒 Garantía 14 días sin preguntas · Visa · Mastercard · PayPal</span>
 
-      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Empieza a cuidarte antes de llegar al límite — $17</a>
-      <span class="pay-note">🔒 Pago seguro · Visa · Mastercard · PayPal</span>
-
-      <div style="display:flex;justify-content:center;margin-top:14px;">
-        <div class="guarantee">
-          <span class="sh">🛡️</span>
-          <p>Garantía personal de Vanessa: si en 48 h no sientes alivio, te devuelvo cada centavo. Sin preguntas.</p>
-        </div>
-      </div>
-
-      <!-- EMAIL CAPTURE -->
-      <div class="email-section">
-        <h4>¿Quieres guardar tu resultado?</h4>
-        <p>Te enviamos tu diagnóstico completo + la primera herramienta del Kit de Emergencia Emocional, gratis.</p>
+      <div class="email-section-soft">
+        <p>Si quieres, te enviamos tu resultado para guardarlo.</p>
         <div class="email-form">
-          <input type="email" placeholder="Tu correo electrónico" id="email-r1">
-          <button onclick="submitEmail('email-r1','result1')">Guardar →</button>
+          <input type="email" placeholder="Tu correo" id="email-r1">
+          <button onclick="submitEmail('email-r1','result1')">Enviar →</button>
         </div>
         <span class="email-skip" onclick="this.parentElement.style.display='none'">No, gracias</span>
       </div>
@@ -438,55 +430,31 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"/></
     <div class="result-wrap">
       <div class="result-badge badge-2">🔥 Agotamiento Activo</div>
 
-      <h2 class="result-title">"Lo que sientes ya tiene nombre: agotamiento del cuidador. Y es más serio de lo que crees."</h2>
+      <h2 class="result-title">Lo que sientes tiene nombre.<br>Y tiene salida.</h2>
 
-      <p class="result-body">No es debilidad. No es exageración. Es lo que pasa cuando una persona da sin parar y nadie la cuida a ella.</p>
+      <p class="result-body">No estás exagerando. No estás fallando. Llevas demasiado tiempo dando sin que nadie te cuide a ti — y eso deja una huella real.</p>
 
-      <p class="result-body">Estás en el punto donde el cansancio ya es diario, la culpa ya es constante, y la sensación de haberte perdido a ti misma ya no es esporádica — es el fondo de tu día. Sin intervención, esto se profundiza.</p>
+      <div class="result-truth">"El agotamiento activo no desaparece solo. Necesita atención — la misma que tú das a los demás, pero dirigida a ti."</div>
 
-      <div class="result-divider"></div>
+      <ul class="result-benefits">
+        <li><span class="ck">✓</span><span>Soltar la culpa que no te pertenece</span></li>
+        <li><span class="ck">✓</span><span>Un espacio para lo que no puedes decir en voz alta</span></li>
+        <li><span class="ck">✓</span><span>Herramientas para los días más difíciles</span></li>
+      </ul>
 
-      <!-- MICRO RESET -->
-      <div class="micro-reset">
-        <p>Respira. Lo que sientes tiene nombre.<span>No estás exagerando. No estás fallando. Estás agotada — y eso es diferente.</span></p>
-      </div>
+      <p class="result-micro">No estás exagerando. No estás fallando. Estás agotada — y eso es diferente.</p>
 
-      <!-- BRIDGE -->
-      <div class="result-bridge">
-        <span class="bridge-eyebrow">Pero no tienes que seguir así</span>
-        <h3>Miles de cuidadoras salieron de este punto exacto</h3>
-        <ul>
-          <li><span class="ck">✓</span><span>Soltar la culpa que no te pertenece — con herramientas reales</span></li>
-          <li><span class="ck">✓</span><span>Tener un espacio para las emociones que no puedes decir en voz alta</span></li>
-          <li><span class="ck">✓</span><span>Volver a encontrarte — sin dejar de cuidar a quien amas</span></li>
-        </ul>
-      </div>
+      <p class="result-bridge-phrase">No tienes que seguir cargando esto sola.<br><em>Hay una salida.</em></p>
 
-      <!-- PRODUCT -->
-      <div class="product-box">
-        <span class="pb-eyebrow">Creado para el punto exacto donde estás</span>
-        <h3>El Cuidador Agotado</h3>
-        <p>5 recursos de apoyo emocional para cuidadoras. Diseñados para los momentos difíciles — el de crisis, el de culpa, el de sentirte invisible.</p>
-        <div class="price"><span class="curr">$</span>17</div>
-        <div class="price-note">USD · Acceso inmediato · Garantía 14 días</div>
-      </div>
+      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Quiero dejar de sentirme así — $17</a>
+      <p class="result-product-line">5 recursos de apoyo emocional · Psicóloga Clínica Vanessa Umaña · Acceso en menos de 2 minutos</p>
+      <span class="pay-note">🔒 Garantía 14 días sin preguntas · Visa · Mastercard · PayPal</span>
 
-      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Quiero dejar de sentirme así hoy — $17</a>
-      <span class="pay-note">🔒 Pago seguro · Visa · Mastercard · PayPal</span>
-
-      <div style="display:flex;justify-content:center;margin-top:14px;">
-        <div class="guarantee">
-          <span class="sh">🛡️</span>
-          <p>Garantía personal de Vanessa: si en 48 h no sientes alivio, te devuelvo cada centavo. Sin preguntas.</p>
-        </div>
-      </div>
-
-      <div class="email-section">
-        <h4>¿Quieres guardar tu resultado?</h4>
-        <p>Te enviamos tu diagnóstico + la primera herramienta del Kit de Emergencia Emocional, gratis.</p>
+      <div class="email-section-soft">
+        <p>Si quieres, te enviamos tu resultado para guardarlo.</p>
         <div class="email-form">
-          <input type="email" placeholder="Tu correo electrónico" id="email-r2">
-          <button onclick="submitEmail('email-r2','result2')">Guardar →</button>
+          <input type="email" placeholder="Tu correo" id="email-r2">
+          <button onclick="submitEmail('email-r2','result2')">Enviar →</button>
         </div>
         <span class="email-skip" onclick="this.parentElement.style.display='none'">No, gracias</span>
       </div>
@@ -500,55 +468,31 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"/></
     <div class="result-wrap">
       <div class="result-badge badge-3">⚠️ Agotamiento Crítico</div>
 
-      <h2 class="result-title">"Llevas demasiado tiempo en esto sola. Tu mente y tu cuerpo ya están enviando señales de alerta."</h2>
+      <h2 class="result-title">Llevas demasiado tiempo<br>en esto sola.</h2>
 
-      <p class="result-body">Lo que describes es agotamiento severo del cuidador. No es algo que se resuelve descansando un fin de semana. Llevas demasiado tiempo dando sin que nadie te cuide a ti — y eso deja una huella profunda.</p>
+      <p class="result-body">Lo que describes es agotamiento real. No es debilidad — es el resultado de dar sin parar sin que nadie te cuide a ti. Tu mente y tu cuerpo ya están enviando señales.</p>
 
-      <p class="result-body">Esto no te hace mala cuidadora. Te hace humana. Y lo más importante: hay una salida — no del cuidado, sino del agotamiento que lo acompaña.</p>
+      <div class="result-truth">"Esto no te hace mala cuidadora. Te hace humana. Y lo más importante: hay una salida — no del cuidado, sino del agotamiento que lo acompaña."</div>
 
-      <div class="result-divider"></div>
+      <ul class="result-benefits">
+        <li><span class="ck">✓</span><span>Apoyo para los momentos de crisis real</span></li>
+        <li><span class="ck">✓</span><span>Un espacio para lo que nunca pudiste decir en voz alta</span></li>
+        <li><span class="ck">✓</span><span>Una salida del agotamiento — sin dejar de cuidar</span></li>
+      </ul>
 
-      <!-- MICRO RESET -->
-      <div class="micro-reset">
-        <p>Respira. Llevas demasiado tiempo cargando esto sola.<span>Que alguien por fin lo nombre — eso también es parte de sanar.</span></p>
-      </div>
+      <p class="result-micro">Que alguien por fin lo nombre — eso también es parte de sanar.</p>
 
-      <!-- BRIDGE -->
-      <div class="result-bridge">
-        <span class="bridge-eyebrow">No tienes que seguir cargando esto sola</span>
-        <h3>Hay una forma más ligera de vivir este proceso</h3>
-        <ul>
-          <li><span class="ck">✓</span><span>Apoyo emocional diseñado para los momentos de crisis real</span></li>
-          <li><span class="ck">✓</span><span>Un espacio para decir lo que nunca pudiste decir en voz alta</span></li>
-          <li><span class="ck">✓</span><span>Herramientas para los días en que ya no puedes más — sin energía extra</span></li>
-        </ul>
-      </div>
-
-      <!-- PRODUCT -->
-      <div class="product-box">
-        <span class="pb-eyebrow">Diseñado para cuando ya estás al límite</span>
-        <h3>El Cuidador Agotado</h3>
-        <p>5 recursos de apoyo emocional para cuidadoras en los momentos más difíciles. Puedes llegar agotada — el sistema te encuentra donde estás.</p>
-        <div class="price"><span class="curr">$</span>17</div>
-        <div class="price-note">USD · Acceso inmediato · Garantía 14 días</div>
-      </div>
+      <p class="result-bridge-phrase">No tienes que seguir así.<br><em>Puedes llegar agotada — el sistema te encuentra donde estás.</em></p>
 
       <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Ya basta de cargar esto sola — $17</a>
-      <span class="pay-note">🔒 Pago seguro · Visa · Mastercard · PayPal</span>
+      <p class="result-product-line">5 recursos de apoyo emocional · Psicóloga Clínica Vanessa Umaña · Acceso en menos de 2 minutos</p>
+      <span class="pay-note">🔒 Garantía 14 días sin preguntas · Visa · Mastercard · PayPal</span>
 
-      <div style="display:flex;justify-content:center;margin-top:14px;">
-        <div class="guarantee">
-          <span class="sh">🛡️</span>
-          <p>Garantía personal de Vanessa: si en 48 h no sientes alivio, te devuelvo cada centavo. Sin preguntas.</p>
-        </div>
-      </div>
-
-      <div class="email-section">
-        <h4>¿Quieres guardar tu resultado?</h4>
-        <p>Te enviamos tu diagnóstico + la primera herramienta del Kit de Emergencia Emocional, gratis.</p>
+      <div class="email-section-soft">
+        <p>Si quieres, te enviamos tu resultado para guardarlo.</p>
         <div class="email-form">
-          <input type="email" placeholder="Tu correo electrónico" id="email-r3">
-          <button onclick="submitEmail('email-r3','result3')">Guardar →</button>
+          <input type="email" placeholder="Tu correo" id="email-r3">
+          <button onclick="submitEmail('email-r3','result3')">Enviar →</button>
         </div>
         <span class="email-skip" onclick="this.parentElement.style.display='none'">No, gracias</span>
       </div>
