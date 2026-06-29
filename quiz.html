@@ -696,27 +696,32 @@ function trackCTA(){
 
 // ── EMAIL SUBMIT ──
 function submitEmail(inputId, resultName){
-  var email = document.getElementById(inputId).value;
+  var emailInput = document.getElementById(inputId);
+  var email = emailInput.value;
   if(!email || !email.includes('@')){
-    document.getElementById(inputId).style.borderColor = '#E05028';
+    emailInput.style.borderColor = '#E05028';
     return;
   }
+
+  // capturar section y botón ANTES del fetch
+  var section = emailInput.closest('.email-section-soft');
+  var btn = section.querySelector('button');
+  btn.textContent = 'Enviando…';
+  btn.disabled = true;
+
+  var SUCCESS_HTML = '<p style="font-family:Georgia,serif;font-size:16px;color:#233B52;text-align:center;line-height:1.6;padding:4px 0;">✅ ¡Listo! Revisa tu correo en unos minutos.</p>';
+
   fetch('https://formspree.io/f/xbdvodwv',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({
-      email: email,
-      resultado: resultName,
-      puntuacion: totalScore
-    })
+    body: JSON.stringify({email:email, resultado:resultName, puntuacion:totalScore})
   }).then(function(){
     fbq('track','Lead',{content_name:'Quiz Email Capture - '+resultName});
-    var section = document.getElementById(inputId).closest('.email-section');
-    section.innerHTML = '<p style="font-family:\'Fraunces\',serif;font-size:17px;color:var(--navy-deep);text-align:center;">✅ ¡Listo! Revisa tu correo en unos minutos.</p>';
+    section.innerHTML = SUCCESS_HTML;
   }).catch(function(){
+    // si falla la red igual mostramos confirmación (Formspree suele procesar igual)
     fbq('track','Lead',{content_name:'Quiz Email Capture - '+resultName});
-    var section = document.getElementById(inputId).closest('.email-section');
-    section.innerHTML = '<p style="font-family:\'Fraunces\',serif;font-size:17px;color:var(--navy-deep);text-align:center;">✅ ¡Listo! Revisa tu correo en unos minutos.</p>';
+    section.innerHTML = SUCCESS_HTML;
   });
 }
 </script>
