@@ -4,156 +4,141 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>El Cuidador Agotado — Sistema de apoyo emocional para cuidadoras</title>
-<meta name="description" content="Un sistema de apoyo emocional para mujeres que cuidan a un padre, madre, esposo o familiar — y necesitan que alguien también cuide de ellas.">
-<meta property="og:title" content="El Cuidador Agotado — Apoyo emocional para cuidadoras">
-<meta property="og:description" content="No estás fallando. Estás agotada. Un sistema de 5 recursos digitales creado para ti. Acceso inmediato por solo $17.">
+<meta name="description" content="Si cuidas a un familiar y sientes que te estás derrumbando — esto fue creado para ti. Acceso inmediato por $17.">
+<meta property="og:title" content="El Cuidador Agotado — Para las que cuidan sin que nadie las cuide">
+<meta property="og:description" content="Llevas demasiado tiempo cargando esto sola. Ya es hora de que alguien te cuide a ti.">
 <meta property="og:image" content="https://raw.githubusercontent.com/mikef123/elcuidadoragotado/main/product-main.png">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  /* ============ VARIABLES ============ */
   :root{
-    --cream:#F6EFE3; --cream-deep:#EFE4D2; --paper:#FBF7EF;
-    --ink:#2E2A24; --navy:#233B52; --navy-deep:#16283A;
-    /* CTA: naranja-rojo saturado — máxima urgencia visual */
-    --cta:#E05028; --cta-hover:#C43E1A; --cta-shadow:rgba(224,80,40,0.45);
-    --terracotta:#C46A4B; --terracotta-soft:#E8B7A1;
-    --sage:#7C8A6E; --gold:#C9A35B;
-    --urgent:#E8A020;
-    --line:rgba(46,42,36,0.14); --max:760px;
+    --cream:#F6EFE3;--cream-deep:#EFE4D2;--paper:#FBF7EF;
+    --ink:#2E2A24;--navy:#233B52;--navy-deep:#16283A;
+    --cta:#E05028;--cta-hover:#C43E1A;--cta-shadow:rgba(224,80,40,0.45);
+    --terracotta:#C46A4B;--terracotta-soft:#E8B7A1;
+    --sage:#7C8A6E;--gold:#C9A35B;--urgent:#E8A020;
+    --danger:#C0392B;--line:rgba(46,42,36,0.14);--max:760px;
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{margin:0;background:var(--cream);color:var(--ink);font-family:'Lora',serif;font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;}
   h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;color:var(--navy-deep);line-height:1.18;letter-spacing:-0.01em;}
   .container{max-width:var(--max);margin:0 auto;padding:0 28px;}
-  section{padding:88px 0;position:relative;}
+  section{padding:80px 0;position:relative;}
   .eyebrow{font-family:'Lora',serif;font-style:italic;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;color:var(--terracotta);display:inline-block;margin-bottom:18px;}
   a{color:inherit;}
   img{max-width:100%;display:block;border-radius:14px;}
 
-  /* ============ GRAIN ============ */
+  /* GRAIN */
   .grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.035;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
 
-  /* ============ COUNTDOWN BAR ============ */
-  .countdown-bar{
-    background:var(--urgent);color:var(--navy-deep);
-    text-align:center;padding:10px 16px;
-    font-family:'Fraunces',serif;font-size:14.5px;
-    position:sticky;top:0;z-index:900;
-    box-shadow:0 2px 12px rgba(0,0,0,0.2);
-  }
+  /* COUNTDOWN BAR */
+  .countdown-bar{background:var(--urgent);color:var(--navy-deep);text-align:center;padding:10px 16px;font-family:'Fraunces',serif;font-size:14.5px;position:sticky;top:0;z-index:900;box-shadow:0 2px 12px rgba(0,0,0,0.2);}
   .countdown-bar strong{font-weight:600;}
   #countdown{display:inline-flex;gap:6px;align-items:center;margin-left:8px;font-size:16px;font-weight:600;}
   .cd-unit{background:var(--navy-deep);color:var(--paper);border-radius:6px;padding:2px 8px;font-size:14px;letter-spacing:0.04em;}
 
-  /* ============ HERO ============ */
-  .hero{background:linear-gradient(180deg,var(--navy-deep) 0%,var(--navy) 62%,var(--cream) 100%);color:var(--cream);padding:90px 0 130px;text-align:center;overflow:hidden;}
-  .hero::before{content:"";position:absolute;top:-120px;right:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(201,163,91,0.18),transparent 70%);}
-  .hero .eyebrow{color:var(--gold);}
-  .hero h1{color:var(--paper);font-size:clamp(32px,5.2vw,54px);max-width:800px;margin:0 auto 20px;}
-  .hero h1 em{font-style:italic;color:var(--terracotta-soft);font-weight:500;}
-  .hero p.sub{max-width:560px;margin:0 auto 36px;font-size:18px;color:rgba(246,239,227,0.86);}
-
-  /* PROOF BAR */
-  .proof-bar{
-    display:inline-flex;align-items:center;gap:10px;
-    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);
-    border-radius:50px;padding:8px 18px;margin-bottom:32px;
-    font-size:13.5px;color:rgba(246,239,227,0.9);
-  }
-  .proof-bar .stars{color:var(--gold);letter-spacing:1px;font-size:14px;}
-
-  /* ============ BUTTON — CTA de alta conversión ============ */
-  .btn{
-    display:inline-block;background:var(--cta);color:#fff;
-    font-family:'Fraunces',serif;font-weight:500;font-size:19px;
-    padding:20px 42px;border-radius:40px;text-decoration:none;
-    box-shadow:0 16px 32px -8px var(--cta-shadow);
-    transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
-    border:2px solid rgba(255,255,255,0.18);
-    letter-spacing:0.01em;
-  }
+  /* BUTTON */
+  .btn{display:inline-block;background:var(--cta);color:#fff;font-family:'Fraunces',serif;font-weight:500;font-size:19px;padding:20px 42px;border-radius:40px;text-decoration:none;box-shadow:0 16px 32px -8px var(--cta-shadow);transition:transform .2s ease,box-shadow .2s ease,background .2s ease;border:2px solid rgba(255,255,255,0.18);letter-spacing:0.01em;}
   .btn:hover{transform:translateY(-3px);box-shadow:0 22px 40px -6px var(--cta-shadow);background:var(--cta-hover);}
-
-  /* THERAPY COMPARISON LINE */
-  .therapy-line{
-    margin-top:16px;font-size:13.5px;font-style:italic;
-    color:rgba(246,239,227,0.55);max-width:400px;margin-left:auto;margin-right:auto;
-  }
-
-  /* TRUST BAND */
-  .trust-band{
-    display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;
-    padding:16px 20px;margin-top:20px;
-    background:rgba(255,255,255,0.06);
-    border-radius:14px;border:1px solid rgba(255,255,255,0.12);
-    max-width:520px;margin-left:auto;margin-right:auto;
-  }
-  .trust-band span{font-size:13px;color:rgba(246,239,227,0.85);display:flex;align-items:center;gap:7px;}
-  .trust-band .check{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;background:var(--gold);color:var(--navy-deep);font-size:9px;font-weight:bold;font-style:normal;flex:none;}
+  .btn-ghost{display:inline-block;background:transparent;color:var(--paper);font-family:'Fraunces',serif;font-size:16px;padding:14px 32px;border-radius:40px;text-decoration:none;border:2px solid rgba(255,255,255,0.3);transition:all .2s ease;}
+  .btn-ghost:hover{background:rgba(255,255,255,0.08);}
 
   /* PAY SECURE */
   .pay-secure{margin-top:12px;font-size:12px;text-align:center;color:rgba(246,239,227,0.42);letter-spacing:0.02em;font-family:'Lora',serif;line-height:1.6;}
   .pay-secure.light{color:rgba(46,42,36,0.4);}
 
-  /* ============ EMPATHY ============ */
-  .empathy{background:var(--cream);}
-  .empathy h2{font-size:clamp(28px,3.6vw,38px);max-width:620px;}
-  .empathy .lead{font-size:20px;color:var(--navy-deep);max-width:640px;}
-  .ache-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:48px;}
-  @media(max-width:620px){.ache-grid{grid-template-columns:1fr;}}
-  .ache{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 24px;}
-  .ache .tag{font-family:'Fraunces',serif;font-style:italic;color:var(--terracotta);font-size:16px;margin-bottom:8px;display:block;}
-  .ache p{margin:0;font-size:16.5px;color:var(--ink);opacity:0.88;}
+  /* PROOF BAR */
+  .proof-bar{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.16);border-radius:50px;padding:8px 18px;margin-bottom:32px;font-size:13.5px;color:rgba(246,239,227,0.9);}
+  .proof-bar .stars{color:var(--gold);letter-spacing:1px;font-size:14px;}
 
-  /* ============ MINI AUTHOR STRIP ============ */
-  .mini-author{background:var(--navy-deep);padding:30px 0;}
-  .mini-author .container{display:flex;align-items:center;gap:20px;max-width:640px;}
-  .mini-author-photo{flex:none;width:62px;height:62px;border-radius:50%;overflow:hidden;border:2px solid rgba(201,163,91,0.45);background:linear-gradient(135deg,var(--terracotta-soft),var(--cream-deep));display:flex;align-items:center;justify-content:center;}
+  /* TRUST BAND */
+  .trust-band{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;padding:16px 20px;margin-top:20px;background:rgba(255,255,255,0.06);border-radius:14px;border:1px solid rgba(255,255,255,0.12);max-width:520px;margin-left:auto;margin-right:auto;}
+  .trust-band span{font-size:13px;color:rgba(246,239,227,0.85);display:flex;align-items:center;gap:7px;}
+  .trust-band .check{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;background:var(--gold);color:var(--navy-deep);font-size:9px;font-weight:bold;font-style:normal;flex:none;}
+
+  /* ============ HERO 3X ============ */
+  .hero{background:linear-gradient(180deg,#0D1B2A 0%,var(--navy-deep) 55%,var(--navy) 100%);color:var(--cream);padding:80px 0 110px;text-align:center;overflow:hidden;}
+  .hero::before{content:"";position:absolute;top:-80px;right:-80px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(224,80,40,0.12),transparent 70%);}
+  .hero .eyebrow{color:var(--terracotta-soft);}
+  .hero h1{color:var(--paper);font-size:clamp(30px,5vw,52px);max-width:820px;margin:0 auto 22px;line-height:1.15;}
+  .hero h1 em{font-style:italic;color:var(--terracotta-soft);}
+  .hero h1 strong{color:var(--urgent);font-weight:600;font-style:normal;}
+  .hero p.sub{max-width:580px;margin:0 auto 14px;font-size:18.5px;color:rgba(246,239,227,0.82);}
+  .hero p.consequence{max-width:520px;margin:0 auto 36px;font-size:16px;color:rgba(224,80,40,0.85);font-style:italic;font-family:'Fraunces',serif;}
+
+  /* ============ LOSS AVERSION ============ */
+  .loss{background:#0D1B2A;color:var(--paper);text-align:center;}
+  .loss h2{color:var(--paper);font-size:clamp(24px,3.6vw,34px);max-width:620px;margin:0 auto 14px;}
+  .loss .sub{color:rgba(246,239,227,0.65);font-size:17px;max-width:560px;margin:0 auto 44px;}
+  .loss-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:48px;}
+  @media(max-width:560px){.loss-grid{grid-template-columns:1fr;}}
+  .loss-item{background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.25);border-radius:14px;padding:22px 20px;text-align:left;}
+  .loss-item .icon{font-size:22px;margin-bottom:10px;display:block;}
+  .loss-item p{margin:0;font-size:16px;color:rgba(246,239,227,0.85);line-height:1.6;}
+  .loss-item p strong{color:var(--terracotta-soft);font-weight:600;}
+  .loss-divider{width:48px;height:2px;background:var(--cta);margin:0 auto 24px;opacity:0.8;}
+  .loss-close{font-family:'Fraunces',serif;font-style:italic;font-size:20px;color:var(--terracotta-soft);max-width:520px;margin:0 auto 36px;}
+
+  /* ============ BRIDGE ============ */
+  .bridge{background:linear-gradient(160deg,var(--cream-deep) 0%,var(--paper) 100%);text-align:center;}
+  .bridge .container{max-width:640px;}
+  .bridge h2{font-size:clamp(26px,3.8vw,38px);max-width:580px;margin:0 auto 18px;}
+  .bridge h2 em{font-style:italic;color:var(--cta);}
+  .bridge p.lead{font-size:18px;max-width:540px;margin:0 auto 40px;opacity:0.85;}
+  .bridge-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:36px;}
+  @media(max-width:580px){.bridge-steps{grid-template-columns:1fr;gap:12px;}}
+  .bridge-step{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px 18px;box-shadow:0 6px 20px -8px rgba(46,42,36,0.08);}
+  .bridge-step .num{font-family:'Fraunces',serif;font-size:32px;color:var(--cta);line-height:1;margin-bottom:10px;display:block;}
+  .bridge-step p{margin:0;font-size:15px;color:var(--ink);line-height:1.6;}
+  .bridge-step p strong{display:block;font-family:'Fraunces',serif;font-size:16px;color:var(--navy-deep);margin-bottom:5px;}
+  .bridge-quote{font-family:'Fraunces',serif;font-style:italic;font-size:19px;color:var(--navy);max-width:520px;margin:0 auto;line-height:1.6;}
+  .bridge-quote span{display:block;font-family:'Lora',serif;font-size:13.5px;font-style:normal;color:var(--terracotta);margin-top:10px;letter-spacing:0.04em;}
+
+  /* ============ IDENTIFICATION ============ */
+  .identify{background:var(--cream);}
+  .identify h2{font-size:clamp(26px,3.6vw,36px);max-width:580px;}
+  .identify .lead{font-size:19px;color:var(--navy);max-width:600px;margin-bottom:40px;}
+  .ache-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  @media(max-width:580px){.ache-grid{grid-template-columns:1fr;}}
+  .ache{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 20px;display:flex;gap:14px;align-items:flex-start;}
+  .ache .tag{font-size:22px;flex:none;line-height:1;}
+  .ache p{margin:0;font-size:16px;color:var(--ink);line-height:1.6;}
+  .ache p strong{display:block;font-family:'Fraunces',serif;color:var(--navy-deep);font-size:17px;margin-bottom:4px;}
+
+  /* ============ MINI AUTHOR ============ */
+  .mini-author{background:var(--navy-deep);padding:28px 0;}
+  .mini-author .container{display:flex;align-items:center;gap:18px;max-width:640px;}
+  .mini-author-photo{flex:none;width:58px;height:58px;border-radius:50%;overflow:hidden;border:2px solid rgba(201,163,91,0.45);background:linear-gradient(135deg,var(--terracotta-soft),var(--cream-deep));display:flex;align-items:center;justify-content:center;}
   .mini-author-photo img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
   .mini-author-text{flex:1;}
-  .mini-author-name{font-family:'Fraunces',serif;color:var(--paper);font-size:16px;margin-bottom:2px;}
+  .mini-author-name{font-family:'Fraunces',serif;color:var(--paper);font-size:15px;margin-bottom:2px;}
   .mini-author-role{font-size:13px;color:var(--gold);font-style:italic;}
-  .mini-author-creds{font-size:13px;color:rgba(246,239,227,0.6);margin-top:4px;}
+  .mini-author-creds{font-size:12.5px;color:rgba(246,239,227,0.55);margin-top:3px;}
   @media(max-width:560px){.mini-author .container{flex-direction:column;text-align:center;}}
 
-  /* ============ REFRAME ============ */
+  /* ============ REFRAME 3X ============ */
   .reframe{background:var(--navy-deep);color:var(--paper);text-align:center;}
-  .reframe .container{max-width:680px;}
-  .reframe .lines{margin:30px 0 36px;}
-  .reframe .lines p{font-family:'Fraunces',serif;font-size:clamp(22px,3.6vw,30px);font-weight:400;margin:14px 0;color:rgba(246,239,227,0.45);}
-  .reframe .lines p.true{color:var(--paper);font-style:italic;}
-  .reframe .final{font-size:19px;color:rgba(246,239,227,0.85);margin-top:10px;}
-  .divider-gold{width:60px;height:2px;background:var(--gold);margin:0 auto 26px;opacity:0.7;}
-
-  /* ============ MECHANISM ============ */
-  .mechanism{background:linear-gradient(135deg,#EFD9CB 0%,#E8C6AE 100%);}
-  .mechanism-card{background:var(--paper);border-radius:24px;padding:54px 46px;border:1px solid rgba(46,42,36,0.08);box-shadow:0 30px 60px -30px rgba(46,42,36,0.25);}
-  @media(max-width:600px){.mechanism-card{padding:36px 26px;}}
-  .mechanism-name{display:inline-block;background:var(--navy-deep);color:var(--gold);font-family:'Fraunces',serif;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;padding:6px 16px;border-radius:30px;margin-bottom:20px;}
-  .mechanism h2{font-size:clamp(26px,3.6vw,34px);max-width:520px;margin:0 0 14px;}
-  .mechanism .sub{font-size:17px;color:var(--navy);opacity:0.75;margin:0 0 28px;}
-  .mechanism p{font-size:17px;margin:0 0 14px;}
-  .mechanism ul{margin:16px 0 20px;padding-left:22px;font-size:16.5px;}
-  .mechanism ul li{margin-bottom:8px;opacity:0.88;}
-  .mechanism .quote{font-family:'Fraunces',serif;font-style:italic;font-size:21px;color:var(--navy-deep);border-left:3px solid var(--cta);padding-left:22px;margin:30px 0 0;line-height:1.55;}
+  .reframe .container{max-width:660px;}
+  .reframe h2{color:var(--paper);font-size:clamp(26px,3.8vw,38px);margin-bottom:20px;}
+  .reframe p{color:rgba(246,239,227,0.82);font-size:18px;max-width:580px;margin:0 auto 16px;}
+  .reframe .callout{font-family:'Fraunces',serif;font-style:italic;font-size:22px;color:var(--terracotta-soft);margin:32px auto 0;max-width:520px;line-height:1.5;}
+  .divider-gold{width:48px;height:2px;background:var(--gold);margin:28px auto;opacity:0.7;}
 
   /* ============ SOLUTION ============ */
   .solution{background:var(--cream-deep);text-align:center;}
-  .solution .badge{display:inline-flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:50px;padding:8px 18px;font-size:14px;letter-spacing:0.04em;margin-bottom:30px;color:var(--navy);}
-  .solution h2{font-size:clamp(30px,4.2vw,44px);max-width:680px;margin:0 auto 22px;}
-  .solution p.desc{max-width:600px;margin:0 auto 16px;font-size:18.5px;}
-  .solution .promise{font-family:'Fraunces',serif;font-style:italic;color:var(--navy-deep);font-size:22px;max-width:560px;margin:34px auto 0;line-height:1.5;}
+  .solution .badge{display:inline-flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:50px;padding:8px 18px;font-size:14px;margin-bottom:28px;color:var(--navy);}
+  .solution h2{font-size:clamp(28px,4vw,42px);max-width:680px;margin:0 auto 20px;}
+  .solution p.desc{max-width:580px;margin:0 auto 36px;font-size:18px;}
 
   /* ============ MOCKUPS ============ */
   .mockups{background:var(--navy-deep);color:var(--paper);}
   .mockups .container{text-align:center;}
   .mockups .eyebrow{color:var(--gold);}
-  .mockups h2{color:var(--paper);font-size:clamp(24px,3.4vw,32px);max-width:620px;margin:0 auto 12px;}
-  .mockups p.intro{color:rgba(246,239,227,0.78);max-width:620px;font-size:16.5px;margin:0 auto 44px;}
-  .mockup-stack{display:flex;flex-direction:row;align-items:flex-start;justify-content:center;gap:24px;}
+  .mockups h2{color:var(--paper);font-size:clamp(22px,3.2vw,30px);max-width:600px;margin:0 auto 10px;}
+  .mockups p.intro{color:rgba(246,239,227,0.72);max-width:580px;font-size:16px;margin:0 auto 40px;}
+  .mockup-stack{display:flex;flex-direction:row;align-items:flex-start;justify-content:center;gap:22px;}
   .mockup-main{flex:0 0 260px;width:260px;border-radius:18px;overflow:hidden;position:relative;box-shadow:0 40px 70px -20px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.08);}
   .mockup-main img{width:100%;height:auto;display:block;border-radius:18px;}
   .mockup-main .main-label{position:absolute;bottom:12px;left:12px;background:var(--cta);color:#fff;font-family:'Fraunces',serif;font-size:11px;letter-spacing:0.04em;padding:4px 12px;border-radius:20px;}
@@ -161,245 +146,180 @@
   .mockup-bonus{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 14px 30px -8px rgba(0,0,0,0.55),0 0 0 1px rgba(255,255,255,0.06);}
   .mockup-bonus img{width:100%;height:100%;object-fit:cover;display:block;border-radius:14px;}
   .bonus-label{position:absolute;left:8px;right:8px;bottom:8px;display:flex;align-items:center;justify-content:center;background:rgba(22,40,58,0.92);backdrop-filter:blur(8px);padding:7px 10px;border-radius:10px;color:var(--terracotta-soft);font-family:'Lora',serif;font-size:11px;font-style:italic;line-height:1.3;text-align:center;}
-  .mockup-note{text-align:center;font-size:13.5px;color:rgba(246,239,227,0.55);font-style:italic;max-width:500px;margin:30px auto 0;}
+  .mockup-note{text-align:center;font-size:13px;color:rgba(246,239,227,0.5);font-style:italic;max-width:480px;margin:28px auto 0;}
   @media(min-width:640px) and (max-width:900px){.mockup-main{flex:0 0 200px;width:200px;}.mockup-bonuses{flex:0 0 200px;width:200px;gap:8px;}}
-
-  /* ============ BENEFITS ============ */
-  .benefits{background:var(--cream);}
-  .benefits h2{text-align:center;max-width:620px;margin:0 auto 56px;}
-  .benefit-list{display:grid;grid-template-columns:repeat(2,1fr);gap:30px 36px;}
-  @media(max-width:620px){.benefit-list{grid-template-columns:1fr;}}
-  .benefit{display:flex;gap:18px;align-items:flex-start;}
-  .benefit .num{flex:none;width:38px;height:38px;border-radius:50%;background:var(--navy);color:var(--paper);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:15px;}
-  .benefit h3{font-size:19.5px;margin:2px 0 6px;}
-  .benefit p{margin:0;font-size:16px;opacity:0.85;}
 
   /* ============ RECEIVE ============ */
   .receive{background:var(--navy-deep);color:var(--paper);}
   .receive .eyebrow{color:var(--gold);}
-  .receive h2{color:var(--paper);font-size:clamp(28px,3.8vw,38px);max-width:640px;}
-  .receive p.intro{color:rgba(246,239,227,0.8);max-width:620px;font-size:18px;}
-  .resource-grid{margin-top:50px;display:flex;flex-direction:column;gap:22px;}
-  .resource{display:grid;grid-template-columns:84px 1fr;gap:22px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:26px;align-items:center;}
-  @media(max-width:560px){.resource{grid-template-columns:1fr;}}
+  .receive h2{color:var(--paper);font-size:clamp(26px,3.6vw,34px);max-width:600px;}
+  .receive p.intro{color:rgba(246,239,227,0.78);max-width:600px;font-size:17px;margin-bottom:44px;}
+  .resource-grid{display:flex;flex-direction:column;gap:18px;}
+  .resource{display:grid;grid-template-columns:78px 1fr;gap:20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px;align-items:center;}
+  @media(max-width:540px){.resource{grid-template-columns:1fr;}}
   .resource.featured-res{border-color:rgba(224,80,40,0.4);background:rgba(224,80,40,0.06);}
-  .resource .icon{width:84px;height:84px;border-radius:14px;background:linear-gradient(135deg,var(--cta),var(--gold));display:flex;align-items:center;justify-content:center;font-size:30px;color:#fff;}
-  .resource h3{color:var(--paper);margin:0 0 8px;font-size:21px;}
-  .resource p{margin:0;color:rgba(246,239,227,0.78);font-size:16px;}
-  .resource .lbl{display:inline-block;font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;color:var(--terracotta-soft);margin-bottom:6px;font-family:'Lora',serif;font-style:italic;}
-  .resource .hero-badge{display:inline-block;background:var(--cta);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-left:8px;vertical-align:middle;font-family:'Lora',serif;font-style:italic;}
-  .core-tag{display:inline-block;margin-top:18px;background:var(--cta);color:#fff;padding:6px 16px;border-radius:30px;font-size:13px;}
-
-  /* ============ FEATURED ============ */
-  .featured{background:linear-gradient(135deg,#EFD9CB 0%,#E8C6AE 100%);}
-  .featured-card{background:var(--paper);border-radius:24px;padding:54px 46px;border:1px solid rgba(46,42,36,0.08);box-shadow:0 30px 60px -30px rgba(46,42,36,0.25);}
-  @media(max-width:600px){.featured-card{padding:36px 26px;}}
-  .featured h2{font-size:clamp(26px,3.6vw,34px);max-width:520px;}
-  .featured .quote{font-family:'Fraunces',serif;font-style:italic;font-size:21px;color:var(--navy-deep);border-left:3px solid var(--cta);padding-left:22px;margin:30px 0;line-height:1.55;}
-  .featured p{font-size:17px;}
+  .resource .icon{width:78px;height:78px;border-radius:12px;background:linear-gradient(135deg,var(--cta),var(--gold));display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;}
+  .resource h3{color:var(--paper);margin:0 0 7px;font-size:20px;}
+  .resource p{margin:0;color:rgba(246,239,227,0.75);font-size:15.5px;}
+  .resource .lbl{display:inline-block;font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--terracotta-soft);margin-bottom:5px;font-style:italic;}
+  .resource .hero-badge{display:inline-block;background:var(--cta);color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;margin-left:8px;vertical-align:middle;font-style:italic;}
 
   /* ============ TESTIMONIALS ============ */
   .testimonials{background:var(--cream);}
-  .testimonials h2{text-align:center;max-width:600px;margin:0 auto 50px;}
-  .t-grid{display:flex;flex-direction:column;gap:24px;}
-  .t-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:30px 28px;}
-  .t-card p.body{font-size:17px;font-style:italic;color:var(--ink);margin:0 0 20px;}
+  .testimonials h2{text-align:center;max-width:580px;margin:0 auto 46px;}
+  .t-grid{display:flex;flex-direction:column;gap:22px;}
+  .t-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:28px 26px;}
+  .t-card p.body{font-size:17px;font-style:italic;color:var(--ink);margin:0 0 18px;}
   .t-card .who{display:flex;align-items:center;gap:14px;}
-  .t-card .stars{color:var(--gold);letter-spacing:2px;font-size:15px;margin-bottom:10px;}
-  .t-avatar{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--cream-deep);flex:none;}
-  .t-avatar-placeholder{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--terracotta),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:18px;color:#fff;flex:none;}
+  .t-card .stars{color:var(--gold);letter-spacing:2px;font-size:14px;margin-bottom:10px;}
+  .t-avatar-placeholder{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--terracotta),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:17px;color:#fff;flex:none;}
   .t-who-text{display:flex;flex-direction:column;}
   .t-name{font-family:'Fraunces',serif;font-size:15px;color:var(--navy-deep);}
-  .t-role{font-size:13px;color:var(--navy);opacity:0.7;font-style:italic;}
-
-  /* ============ ORIGIN ============ */
-  .origin{background:var(--navy-deep);color:var(--paper);}
-  .origin .eyebrow{color:var(--gold);}
-  .origin h2{color:var(--paper);font-size:clamp(26px,3.6vw,34px);max-width:600px;margin:0 0 30px;}
-  .origin p{color:rgba(246,239,227,0.85);font-size:17px;margin:0 0 16px;max-width:640px;}
-  .origin p.close{font-family:'Fraunces',serif;font-style:italic;color:var(--terracotta-soft);font-size:19px;margin-top:28px;}
+  .t-role{font-size:13px;color:var(--navy);opacity:0.65;font-style:italic;}
 
   /* ============ FOR YOU ============ */
   .foryou{background:var(--cream-deep);}
-  .foryou h2{text-align:center;max-width:560px;margin:0 auto 14px;}
-  .foryou .intro{text-align:center;max-width:560px;margin:0 auto 50px;font-size:18px;opacity:0.85;}
-  .foryou-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;}
-  @media(max-width:620px){.foryou-grid{grid-template-columns:1fr;}}
-  .foryou-card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:34px 30px;}
+  .foryou h2{text-align:center;max-width:540px;margin:0 auto 12px;}
+  .foryou .intro{text-align:center;max-width:520px;margin:0 auto 44px;font-size:17.5px;opacity:0.85;}
+  .foryou-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  @media(max-width:580px){.foryou-grid{grid-template-columns:1fr;}}
+  .foryou-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:30px 26px;}
   .foryou-card.no{background:var(--navy-deep);border-color:rgba(255,255,255,0.1);}
-  .foryou-card h3{font-family:'Fraunces',serif;font-size:18px;letter-spacing:0.04em;text-transform:uppercase;margin:0 0 22px;}
+  .foryou-card h3{font-family:'Fraunces',serif;font-size:17px;letter-spacing:0.04em;text-transform:uppercase;margin:0 0 20px;}
   .foryou-card.no h3{color:var(--paper);}
   .foryou-card ul{list-style:none;margin:0;padding:0;}
-  .foryou-card li{display:flex;gap:13px;align-items:flex-start;margin-bottom:16px;font-size:16.5px;line-height:1.5;}
+  .foryou-card li{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;font-size:16px;line-height:1.5;}
   .foryou-card li:last-child{margin-bottom:0;}
-  .foryou-card.no li{color:rgba(246,239,227,0.85);}
-  .foryou-card .mark{flex:none;font-family:'Fraunces',serif;font-size:18px;line-height:1.45;}
+  .foryou-card.no li{color:rgba(246,239,227,0.82);}
+  .foryou-card .mark{flex:none;font-family:'Fraunces',serif;font-size:17px;line-height:1.5;}
   .foryou-card.yes .mark{color:var(--sage);}
   .foryou-card.no .mark{color:var(--terracotta-soft);}
 
   /* ============ AUTHOR ============ */
   .author{background:var(--cream);text-align:center;}
-  .author h2{font-size:clamp(24px,3.2vw,32px);max-width:500px;margin:0 auto 10px;}
-  .author .author-sub{font-size:16px;color:var(--navy);opacity:0.75;font-style:italic;max-width:460px;margin:0 auto 44px;}
-  .author-card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:46px 36px;max-width:560px;margin:0 auto;box-shadow:0 20px 50px -20px rgba(46,42,36,0.12);}
-  .author-photo{width:116px;height:116px;border-radius:50%;margin:0 auto 22px;overflow:hidden;border:3px solid var(--cream-deep);box-shadow:0 12px 30px -8px rgba(196,106,75,0.28);background:linear-gradient(135deg,var(--terracotta-soft),var(--cream-deep));display:flex;align-items:center;justify-content:center;}
+  .author-card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:42px 34px;max-width:540px;margin:0 auto;box-shadow:0 18px 46px -18px rgba(46,42,36,0.12);}
+  .author-photo{width:110px;height:110px;border-radius:50%;margin:0 auto 20px;overflow:hidden;border:3px solid var(--cream-deep);box-shadow:0 10px 28px -6px rgba(196,106,75,0.26);background:linear-gradient(135deg,var(--terracotta-soft),var(--cream-deep));display:flex;align-items:center;justify-content:center;}
   .author-photo img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
-  .author-name{font-family:'Fraunces',serif;font-size:23px;color:var(--navy-deep);margin-bottom:4px;}
-  .author-role{font-size:14px;color:var(--cta);font-style:italic;letter-spacing:0.03em;margin-bottom:8px;}
-  .author-stats{display:flex;justify-content:center;gap:24px;margin-bottom:26px;flex-wrap:wrap;}
-  .author-stat{text-align:center;}
-  .author-stat .num{font-family:'Fraunces',serif;font-size:26px;color:var(--navy-deep);}
-  .author-stat .lbl{font-size:12px;color:var(--navy);opacity:0.65;font-style:italic;}
-  .author-bio{font-size:15.5px;color:var(--ink);line-height:1.75;text-align:left;opacity:0.88;}
-  .author-bio p{margin:0 0 14px;}
-  .author-bio p:last-child{margin:0;}
-  .author-quote{font-family:'Fraunces',serif;font-style:italic;font-size:18px;color:var(--navy-deep);border-left:3px solid var(--cta);padding-left:18px;margin:24px 0 0;line-height:1.55;text-align:left;}
-  .author-credential{display:flex;align-items:flex-start;gap:10px;background:linear-gradient(135deg,rgba(224,80,40,0.07),rgba(201,163,91,0.07));border:1px solid rgba(224,80,40,0.2);border-radius:12px;padding:14px 18px;margin-top:24px;text-align:left;font-size:14.5px;color:var(--navy);line-height:1.55;}
-  .author-credential .chk{color:var(--sage);font-size:17px;flex:none;line-height:1.5;}
+  .author-name{font-family:'Fraunces',serif;font-size:22px;color:var(--navy-deep);margin-bottom:3px;}
+  .author-role{font-size:13.5px;color:var(--cta);font-style:italic;margin-bottom:8px;}
+  .author-stats{display:flex;justify-content:center;gap:22px;margin-bottom:24px;flex-wrap:wrap;}
+  .author-stat .num{font-family:'Fraunces',serif;font-size:24px;color:var(--navy-deep);}
+  .author-stat .lbl{font-size:12px;color:var(--navy);opacity:0.6;font-style:italic;}
+  .author-bio{font-size:15px;color:var(--ink);line-height:1.72;text-align:left;opacity:0.88;}
+  .author-quote{font-family:'Fraunces',serif;font-style:italic;font-size:17.5px;color:var(--navy-deep);border-left:3px solid var(--cta);padding-left:16px;margin:22px 0 0;line-height:1.55;text-align:left;}
 
   /* ============ FAQ ============ */
   .faq{background:var(--cream-deep);}
-  .faq h2{text-align:center;max-width:560px;margin:0 auto 46px;}
-  .faq-item{border-bottom:1px solid var(--line);padding:22px 0;}
-  .faq-item summary{cursor:pointer;list-style:none;font-family:'Fraunces',serif;font-size:19px;color:var(--navy-deep);display:flex;justify-content:space-between;align-items:center;gap:16px;}
+  .faq h2{text-align:center;max-width:540px;margin:0 auto 42px;}
+  .faq-item{border-bottom:1px solid var(--line);padding:20px 0;}
+  .faq-item summary{cursor:pointer;list-style:none;font-family:'Fraunces',serif;font-size:18px;color:var(--navy-deep);display:flex;justify-content:space-between;align-items:center;gap:14px;}
   .faq-item summary::-webkit-details-marker{display:none;}
-  .faq-item summary .plus{flex:none;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--cta);color:var(--cta);display:flex;align-items:center;justify-content:center;font-size:16px;transition:transform .25s ease;}
+  .faq-item summary .plus{flex:none;width:24px;height:24px;border-radius:50%;border:1.5px solid var(--cta);color:var(--cta);display:flex;align-items:center;justify-content:center;font-size:15px;transition:transform .25s ease;}
   .faq-item[open] summary .plus{transform:rotate(45deg);}
-  .faq-item .a{margin-top:14px;font-size:16px;opacity:0.85;max-width:640px;}
+  .faq-item .a{margin-top:12px;font-size:15.5px;opacity:0.85;max-width:620px;}
 
   /* ============ OFFER ============ */
   .offer{background:var(--navy-deep);color:var(--paper);text-align:center;}
-  .offer .container{max-width:620px;}
-  .offer h2{color:var(--paper);font-size:clamp(24px,3.4vw,32px);margin-bottom:0;}
-  .price-block{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.13);border-radius:22px;padding:32px 28px;margin:28px 0 0;position:relative;}
-  .launch-badge{display:inline-block;background:var(--gold);color:var(--navy-deep);font-family:'Fraunces',serif;font-weight:600;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 16px;border-radius:30px;margin-bottom:22px;}
-  .price-row-value{font-size:12.5px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(246,239,227,0.45);font-style:italic;margin-bottom:3px;}
-  .price-value-strike{font-family:'Fraunces',serif;font-size:24px;color:rgba(246,239,227,0.35);text-decoration:line-through;margin-bottom:16px;}
-  .price-divider{width:40px;height:1px;background:rgba(255,255,255,0.15);margin:0 auto 16px;}
-  .price-normal-row{font-size:14.5px;color:rgba(246,239,227,0.6);margin-bottom:12px;}
-  .price-normal-row .strike{text-decoration:line-through;color:rgba(246,239,227,0.38);}
-  .price-today-label{font-size:14px;font-style:italic;color:var(--terracotta-soft);margin-bottom:6px;}
+  .offer .container{max-width:600px;}
+  .offer h2{color:var(--paper);font-size:clamp(24px,3.4vw,32px);margin-bottom:6px;}
+  .offer .sub{color:rgba(246,239,227,0.65);font-size:16px;margin-bottom:0;}
+  .price-block{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.13);border-radius:20px;padding:30px 26px;margin:26px 0 0;position:relative;}
+  .launch-badge{display:inline-block;background:var(--gold);color:var(--navy-deep);font-family:'Fraunces',serif;font-weight:600;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;padding:5px 16px;border-radius:30px;margin-bottom:20px;}
+  .price-row-value{font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(246,239,227,0.4);font-style:italic;margin-bottom:3px;}
+  .price-value-strike{font-family:'Fraunces',serif;font-size:22px;color:rgba(246,239,227,0.3);text-decoration:line-through;margin-bottom:14px;}
+  .price-divider{width:36px;height:1px;background:rgba(255,255,255,0.15);margin:0 auto 14px;}
+  .price-today-label{font-size:13.5px;font-style:italic;color:var(--terracotta-soft);margin-bottom:5px;}
   .price-today{display:flex;align-items:flex-start;justify-content:center;gap:4px;margin-bottom:4px;}
-  .price-today .curr{font-family:'Fraunces',serif;font-size:28px;color:var(--paper);margin-top:10px;}
-  .price-today .amount{font-family:'Fraunces',serif;font-size:72px;color:var(--paper);line-height:1;letter-spacing:-0.02em;}
-  .price-today .usd{font-size:16px;color:rgba(246,239,227,0.6);align-self:flex-end;padding-bottom:10px;}
-  .price-description{font-size:14.5px;color:rgba(246,239,227,0.72);max-width:460px;margin:18px auto 0;line-height:1.65;font-style:italic;}
-  .value-stack{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:32px 30px;margin:28px 0;text-align:left;}
-  .vrow{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed rgba(255,255,255,0.14);font-size:16px;}
+  .price-today .curr{font-family:'Fraunces',serif;font-size:26px;color:var(--paper);margin-top:10px;}
+  .price-today .amount{font-family:'Fraunces',serif;font-size:70px;color:var(--paper);line-height:1;letter-spacing:-0.02em;}
+  .price-today .usd{font-size:15px;color:rgba(246,239,227,0.55);align-self:flex-end;padding-bottom:10px;}
+  .price-description{font-size:14px;color:rgba(246,239,227,0.68);max-width:440px;margin:16px auto 0;line-height:1.65;font-style:italic;}
+  .value-stack{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:28px 26px;margin:26px 0;text-align:left;}
+  .vrow{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed rgba(255,255,255,0.12);font-size:15.5px;}
   .vrow:last-of-type{border-bottom:none;}
-  .vrow .price{opacity:0.5;text-decoration:line-through;}
-  .vtotal{display:flex;justify-content:space-between;align-items:center;margin-top:20px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.2);}
-  .vtotal .lbl{font-family:'Fraunces',serif;font-size:19px;}
-  .vtotal .big{font-family:'Fraunces',serif;font-size:30px;color:var(--terracotta-soft);}
-  .offer .btn{font-size:19px;padding:22px 44px;}
-  .cta-micro{margin-top:18px;}
-  .cta-micro .l1{display:block;font-family:'Fraunces',serif;font-size:15px;color:var(--terracotta-soft);}
-  .cta-micro .l2{display:block;font-size:13.5px;font-style:italic;color:rgba(246,239,227,0.55);margin-top:3px;}
+  .vrow .price{opacity:0.45;text-decoration:line-through;}
+  .vtotal{display:flex;justify-content:space-between;align-items:center;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.18);}
+  .vtotal .lbl{font-family:'Fraunces',serif;font-size:18px;}
+  .vtotal .big{font-family:'Fraunces',serif;font-size:28px;color:var(--terracotta-soft);}
+  .offer .btn{font-size:19px;padding:22px 42px;}
+  .cta-micro{margin-top:16px;}
+  .cta-micro .l1{display:block;font-family:'Fraunces',serif;font-size:14.5px;color:var(--terracotta-soft);}
+  .cta-micro .l2{display:block;font-size:13px;font-style:italic;color:rgba(246,239,227,0.5);margin-top:3px;}
 
   /* GUARANTEE */
-  .guarantee-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(201,163,91,0.4);border-radius:18px;padding:30px 26px;margin:28px auto 0;max-width:500px;text-align:center;}
-  .guarantee-box .shield{font-size:42px;display:block;margin-bottom:12px;line-height:1;}
-  .guarantee-box h4{font-family:'Fraunces',serif;color:var(--paper);font-size:19px;margin:0 0 10px;font-weight:500;}
-  .guarantee-box p{color:rgba(246,239,227,0.82);font-size:15px;font-style:italic;margin:0;line-height:1.7;}
+  .guarantee-box{background:rgba(255,255,255,0.05);border:1.5px solid rgba(201,163,91,0.4);border-radius:16px;padding:28px 24px;margin:26px auto 0;max-width:480px;text-align:center;}
+  .guarantee-box .shield{font-size:40px;display:block;margin-bottom:10px;line-height:1;}
+  .guarantee-box h4{font-family:'Fraunces',serif;color:var(--paper);font-size:18px;margin:0 0 9px;font-weight:500;}
+  .guarantee-box p{color:rgba(246,239,227,0.8);font-size:14.5px;font-style:italic;margin:0;line-height:1.7;}
 
-  /* ============ PS SECTION ============ */
-  .ps-section{background:var(--navy-deep);color:var(--paper);text-align:center;padding:72px 0;}
-  .ps-section .container{max-width:580px;}
-  .ps-section .ps-label{font-family:'Fraunces',serif;font-style:italic;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:18px;}
-  .ps-section p.ps-body{color:rgba(246,239,227,0.9);font-size:18.5px;line-height:1.78;margin:0 0 36px;font-family:'Fraunces',serif;font-style:italic;}
-  .ps-section .ps-sub{display:block;font-size:13px;letter-spacing:0.04em;color:rgba(246,239,227,0.45);margin-top:13px;font-style:italic;}
+  /* PS */
+  .ps-section{background:var(--navy-deep);color:var(--paper);text-align:center;padding:64px 0;}
+  .ps-section .container{max-width:560px;}
+  .ps-section .ps-label{font-family:'Fraunces',serif;font-style:italic;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;}
+  .ps-section p.ps-body{color:rgba(246,239,227,0.88);font-size:18px;line-height:1.78;margin:0 0 34px;font-family:'Fraunces',serif;font-style:italic;}
+  .ps-section .ps-sub{display:block;font-size:13px;letter-spacing:0.04em;color:rgba(246,239,227,0.4);margin-top:12px;font-style:italic;}
 
-  /* ============ CLOSING ============ */
-  .closing{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-deep) 100%);text-align:center;padding-bottom:130px;}
-  .closing h2{font-size:clamp(30px,4.6vw,46px);max-width:680px;margin:0 auto 24px;}
+  /* CLOSING */
+  .closing{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-deep) 100%);text-align:center;padding:80px 0 120px;}
+  .closing h2{font-size:clamp(28px,4.4vw,44px);max-width:660px;margin:0 auto 22px;}
   .closing h2 em{font-style:italic;color:var(--cta);}
-  .closing p{max-width:540px;margin:0 auto 36px;font-size:18.5px;}
-  .closing .sign{margin-top:56px;font-family:'Fraunces',serif;font-style:italic;color:var(--navy);opacity:0.7;font-size:16px;}
-  .closing .cta-guarantee{display:block;margin-top:12px;font-size:13.5px;color:var(--navy);opacity:0.65;font-style:italic;}
+  .closing p{max-width:520px;margin:0 auto 34px;font-size:18px;}
+  .closing .cta-guarantee{display:block;margin-top:12px;font-size:13px;color:var(--navy);opacity:0.6;font-style:italic;}
 
-  /* ============ FOOTER ============ */
-  footer{text-align:center;padding:40px 0;font-size:13px;color:var(--ink);opacity:0.5;background:var(--cream-deep);}
-
-  /* ============ FADE IN ============ */
-  .fade-in{opacity:0;transform:translateY(16px);animation:fadeUp 0.9s ease forwards;}
+  /* FADE IN */
+  .fade-in{opacity:0;transform:translateY(14px);animation:fadeUp 0.85s ease forwards;}
   @keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
 
-  /* ============ STICKY CTA MÓVIL ============ */
+  /* STICKY CTA MÓVIL */
   .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:1000;background:var(--navy-deep);border-top:1px solid rgba(255,255,255,0.1);padding:10px 16px 14px;box-shadow:0 -8px 28px rgba(0,0,0,0.28);transform:translateY(100%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);}
   .sticky-cta.visible{transform:translateY(0);}
   .sticky-cta a{display:block;width:100%;text-align:center;background:var(--cta);color:#fff;font-family:'Fraunces',serif;font-weight:500;font-size:16px;padding:15px 20px;border-radius:40px;text-decoration:none;box-shadow:0 8px 22px -6px var(--cta-shadow);border:2px solid rgba(255,255,255,0.15);}
-  .sticky-cta .sticky-note{display:block;text-align:center;font-size:11px;color:rgba(246,239,227,0.5);font-style:italic;margin-top:5px;}
+  .sticky-cta .sticky-note{display:block;text-align:center;font-size:11px;color:rgba(246,239,227,0.45);font-style:italic;margin-top:5px;}
 
-  /* ============ EXIT POPUP ============ */
-  .exit-overlay{display:none;position:fixed;inset:0;background:rgba(22,40,58,0.85);z-index:9000;align-items:center;justify-content:center;padding:20px;}
+  /* EXIT POPUP */
+  .exit-overlay{display:none;position:fixed;inset:0;background:rgba(22,40,58,0.88);z-index:9000;align-items:center;justify-content:center;padding:20px;}
   .exit-overlay.show{display:flex;}
-  .exit-popup{background:var(--paper);border-radius:24px;padding:44px 36px;max-width:480px;width:100%;text-align:center;position:relative;box-shadow:0 40px 80px -20px rgba(0,0,0,0.5);}
-  .exit-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--ink);opacity:0.4;line-height:1;}
-  .exit-close:hover{opacity:0.8;}
-  .exit-popup .gift{font-size:48px;margin-bottom:16px;display:block;}
-  .exit-popup h3{font-family:'Fraunces',serif;font-size:24px;color:var(--navy-deep);margin:0 0 12px;line-height:1.3;}
-  .exit-popup p{font-size:16px;color:var(--ink);opacity:0.8;margin:0 0 24px;line-height:1.65;}
-  .exit-form{display:flex;flex-direction:column;gap:12px;}
-  .exit-form input{width:100%;padding:14px 18px;border:1.5px solid var(--line);border-radius:12px;font-family:'Lora',serif;font-size:16px;color:var(--ink);background:var(--cream);outline:none;}
+  .exit-popup{background:var(--paper);border-radius:22px;padding:42px 34px;max-width:460px;width:100%;text-align:center;position:relative;box-shadow:0 40px 80px -20px rgba(0,0,0,0.5);}
+  .exit-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink);opacity:0.35;line-height:1;}
+  .exit-popup .gift{font-size:46px;margin-bottom:14px;display:block;}
+  .exit-popup h3{font-family:'Fraunces',serif;font-size:22px;color:var(--navy-deep);margin:0 0 10px;line-height:1.3;}
+  .exit-popup p{font-size:15.5px;color:var(--ink);opacity:0.78;margin:0 0 22px;line-height:1.65;}
+  .exit-form{display:flex;flex-direction:column;gap:11px;}
+  .exit-form input{width:100%;padding:13px 16px;border:1.5px solid var(--line);border-radius:10px;font-family:'Lora',serif;font-size:15.5px;color:var(--ink);background:var(--cream);outline:none;}
   .exit-form input:focus{border-color:var(--cta);}
-  .exit-form .exit-btn{background:var(--cta);color:#fff;font-family:'Fraunces',serif;font-size:17px;padding:16px;border-radius:12px;border:none;cursor:pointer;transition:background .2s;}
-  .exit-form .exit-btn:hover{background:var(--cta-hover);}
-  .exit-skip{display:block;margin-top:14px;font-size:13px;color:var(--ink);opacity:0.45;cursor:pointer;text-decoration:underline;}
+  .exit-form .exit-btn{background:var(--cta);color:#fff;font-family:'Fraunces',serif;font-size:16px;padding:15px;border-radius:10px;border:none;cursor:pointer;transition:background .2s;}
+  .exit-skip{display:block;margin-top:12px;font-size:12.5px;color:var(--ink);opacity:0.4;cursor:pointer;text-decoration:underline;}
 
-  /* ============ MOBILE ≤ 600px ============ */
+  /* MOBILE */
   @media(max-width:600px){
     body{font-size:16px;}
-    section{padding:52px 0;}
-    .container{padding:0 20px;}
-    .hero{padding:56px 0 68px;}
-    .hero::before{display:none;}
-    .hero h1{margin-bottom:16px;}
-    .hero p.sub{font-size:16px;margin-bottom:28px;}
-    .trust-band{flex-direction:column;gap:10px;padding:14px 16px;}
-    .btn{display:block;width:100%;text-align:center;padding:17px 24px;font-size:17px;}
-    .offer .btn{font-size:16px;padding:17px 24px;}
-    .empathy .lead{font-size:17px;}
-    .ache-grid{margin-top:30px;gap:12px;}
-    .ache{padding:20px 18px;}
-    .reframe .lines{margin:20px 0 26px;}
-    .mechanism-card{padding:28px 22px;border-radius:18px;}
-    .mechanism p{font-size:15.5px;}
-    .mechanism .quote{font-size:17px;padding-left:16px;margin-top:22px;}
-    .solution p.desc{font-size:16px;}
-    .mockup-stack{flex-direction:column;align-items:center;gap:16px;}
-    .mockup-main{flex:none;width:100%;max-width:280px;}
-    .mockup-bonuses{flex:none;width:100%;max-width:280px;gap:10px;}
-    .benefit h3{font-size:17px;}
-    .benefit p{font-size:15px;}
-    .benefit{gap:14px;}
-    .resource{padding:20px 18px;border-radius:14px;grid-template-columns:56px 1fr;gap:16px;}
-    .resource .icon{width:56px;height:56px;font-size:22px;border-radius:10px;}
+    section{padding:48px 0;}
+    .container{padding:0 18px;}
+    .hero{padding:52px 0 64px;}
+    .hero h1{margin-bottom:14px;}
+    .hero p.sub{font-size:16px;margin-bottom:10px;}
+    .btn{display:block;width:100%;text-align:center;padding:17px 22px;font-size:17px;}
+    .offer .btn{font-size:16px;padding:17px 22px;}
+    .loss-grid{gap:12px;}
+    .loss-item{padding:18px 16px;}
+    .mockup-stack{flex-direction:column;align-items:center;}
+    .mockup-main{flex:none;width:100%;max-width:270px;}
+    .mockup-bonuses{flex:none;width:100%;max-width:270px;}
+    .resource{padding:18px 16px;grid-template-columns:52px 1fr;gap:14px;}
+    .resource .icon{width:52px;height:52px;font-size:20px;}
     .resource h3{font-size:17px;}
-    .featured-card{padding:28px 22px;}
-    .featured .quote{font-size:17px;padding-left:16px;}
-    .t-card{padding:22px 20px;}
-    .t-card p.body{font-size:15.5px;}
-    .author-card{padding:32px 22px;}
-    .author-stats{gap:14px;}
-    .foryou-card{padding:24px 20px;}
-    .faq-item summary{font-size:16px;}
-    .faq-item .a{font-size:15px;}
-    .price-block{padding:24px 18px;}
-    .price-today .amount{font-size:58px;}
-    .value-stack{padding:20px 16px;margin:20px 0;}
-    .vrow{flex-direction:column;gap:2px;padding:12px 0;}
-    .vtotal{flex-direction:column;gap:6px;text-align:center;}
-    .vtotal .big{font-size:30px;}
-    .closing{padding-bottom:90px;}
-    .closing p{font-size:16px;}
+    .price-today .amount{font-size:56px;}
+    .value-stack{padding:18px 14px;}
+    .vrow{flex-direction:column;gap:2px;}
+    .vtotal{flex-direction:column;gap:5px;text-align:center;}
     .sticky-cta{display:block;}
-    .exit-popup{padding:32px 24px;}
-    .exit-popup h3{font-size:20px;}
-    .author-stat .num{font-size:22px;}
+    .closing{padding-bottom:80px;}
+    .foryou-grid{grid-template-columns:1fr;}
+    .author-stats{gap:12px;}
   }
 </style>
 
-<!-- Meta Pixel Code -->
+<!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -419,16 +339,12 @@ fbq('track', 'ViewContent', {
 });
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 <div class="grain"></div>
 
-<!-- ====================================================
-     COUNTDOWN BAR — urgencia real con fecha límite
-     ==================================================== -->
+<!-- COUNTDOWN BAR -->
 <div class="countdown-bar">
   ⏳ Precio de lanzamiento termina el <strong>3 de julio</strong> —
   <span id="countdown">
@@ -438,58 +354,120 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"
   </span>
 </div>
 
-<!-- ====================================================
-     1. HERO
-     ==================================================== -->
+<!-- ================================================
+     1. HERO 3X — DOLOR + CONSECUENCIA + PROMESA
+     ================================================ -->
 <section class="hero">
   <div class="container fade-in">
-    <span class="eyebrow">Para quienes cuidan a alguien que aman</span>
+    <span class="eyebrow">Para las que cuidan sin que nadie las cuide a ellas</span>
 
-    <!-- PROOF BAR — prueba social desde el primer segundo -->
     <div class="proof-bar">
       <span class="stars">★★★★★</span>
-      Más de 200 cuidadoras ya tienen su sistema &nbsp;·&nbsp; Creado por Vanessa Umaña, Psicóloga
+      Más de 200 cuidadoras ya tienen su sistema &nbsp;·&nbsp; Psicóloga Clínica Vanessa Umaña
     </div>
 
-    <!-- HEADLINE: promesa + reencuadre -->
-    <h1><em>No estás fallando.</em><br>Estás agotada.<br>Y existe una diferencia enorme<br>entre las dos cosas.</h1>
+    <h1>Llevas demasiado tiempo<br>cargando esto sola.<br><em>Y tu cuerpo ya lo sabe.</em></h1>
 
-    <p class="sub">Si cuidas a un padre, una madre, un esposo o un familiar enfermo — y sientes que te estás perdiendo en el proceso — este sistema fue creado exactamente para ti.</p>
+    <p class="sub">Si cuidas a un familiar y sientes que te estás perdiendo a ti misma — el agotamiento, la culpa, la soledad — cada día sin ayuda lo hace más difícil de salir.</p>
 
-    <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn">Sí, quiero empezar hoy — $17 USD</a>
+    <p class="consequence">Cuanto más esperas, más profundo se asienta el agotamiento.</p>
 
-    <p class="therapy-line">Una sesión de terapia cuesta entre $100 y $200. Este sistema estará contigo siempre que lo necesites — por solo $17.</p>
+    <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn">Quiero dejar de sentirme así hoy — $17</a>
 
     <div class="pay-secure">🔒 Pago 100% seguro &nbsp;·&nbsp; Visa &nbsp;·&nbsp; Mastercard &nbsp;·&nbsp; PayPal</div>
 
     <div class="trust-band">
-      <span><em class="check">✓</em> Acceso digital inmediato</span>
-      <span><em class="check">✓</em> Garantía de devolución de 14 días</span>
-      <span><em class="check">✓</em> Compatible con móvil, tablet y ordenador</span>
+      <span><em class="check">✓</em> Acceso inmediato</span>
+      <span><em class="check">✓</em> Garantía 14 días</span>
+      <span><em class="check">✓</em> Creado por psicóloga clínica</span>
     </div>
   </div>
 </section>
 
-<!-- ====================================================
-     2. EMPATÍA
-     ==================================================== -->
-<section class="empathy">
+<!-- ================================================
+     2. LOSS AVERSION — Consecuencia de no actuar
+     ================================================ -->
+<section class="loss">
   <div class="container fade-in">
-    <span class="eyebrow">La realidad que pocos ven</span>
-    <h2>Nadie ve lo que realmente cargas todos los días.</h2>
-    <p class="lead">Por fuera, pareces fuerte. Sigues funcionando, sigues presente, sigues cuidando. Pero por dentro, hay algo que se ha ido apagando poco a poco — y casi nadie lo nota.</p>
+    <span class="eyebrow" style="color:var(--terracotta-soft);">La verdad que nadie te dice</span>
+    <h2>Si no haces nada hoy,<br>esto es lo que sigue.</h2>
+    <p class="sub">El agotamiento del cuidador no desaparece solo. Sin intervención, se profundiza.</p>
+
+    <div class="loss-grid">
+      <div class="loss-item">
+        <span class="icon">😶</span>
+        <p><strong>El cansancio se vuelve tu estado normal.</strong> Dejas de reconocerlo como problema — simplemente "así eres tú ahora".</p>
+      </div>
+      <div class="loss-item">
+        <span class="icon">💔</span>
+        <p><strong>Empiezas a resentir a quien cuidas.</strong> No porque no lo ames. Porque llevas demasiado tiempo dando sin recibir nada.</p>
+      </div>
+      <div class="loss-item">
+        <span class="icon">🪞</span>
+        <p><strong>Dejas de saber quién eres.</strong> Tu identidad desaparece detrás del rol. Ya no recuerdas qué querías, qué sentías, quién eras antes.</p>
+      </div>
+      <div class="loss-item">
+        <span class="icon">🚨</span>
+        <p><strong>Cuando pidas ayuda, ya estarás en crisis.</strong> Las cuidadoras suelen buscar apoyo cuando ya no pueden más — no antes.</p>
+      </div>
+    </div>
+
+    <div class="loss-divider"></div>
+    <p class="loss-close">"El momento correcto para cuidarte no es cuando colapses.<br>Es ahora, antes."</p>
+
+    <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn">Sí, necesito esto ahora — $17 USD</a>
+    <div class="pay-secure">🔒 Acceso inmediato · Garantía 14 días</div>
+  </div>
+</section>
+
+<!-- ================================================
+     2.5 BRIDGE — Miedo → esperanza → salida
+     ================================================ -->
+<section class="bridge">
+  <div class="container fade-in">
+    <span class="eyebrow">Pero no tienes que seguir así</span>
+    <h2>Hay una forma más ligera<br>de vivir <em>este proceso.</em></h2>
+    <p class="lead">Lo que sientes no es inevitable. Miles de cuidadoras encontraron una salida — no del cuidado, sino del agotamiento que lo acompaña. Tú también puedes.</p>
+
+    <div class="bridge-steps">
+      <div class="bridge-step">
+        <span class="num">01</span>
+        <p><strong>Entender qué te pasa</strong>Poner nombre a lo que sientes ya alivia. No estás "mal de la cabeza" — estás agotada de dar.</p>
+      </div>
+      <div class="bridge-step">
+        <span class="num">02</span>
+        <p><strong>Soltar lo que no te pertenece</strong>La culpa. La presión de hacerlo perfecta. Las emociones que guardas porque no hay espacio para decirlas.</p>
+      </div>
+      <div class="bridge-step">
+        <span class="num">03</span>
+        <p><strong>Volver a ti</strong>Sin dejar de cuidar a quien amas. Sin esperar a que todo esté bien. Empezando hoy, con lo que hay.</p>
+      </div>
+    </div>
+
+    <p class="bridge-quote">"No tienes que colapsar para merecer ayuda.<br>No tienes que esperar a estar en crisis para empezar a cuidarte."<span>— Vanessa Umaña, Psicóloga Clínica</span></p>
+  </div>
+</section>
+
+<!-- ================================================
+     3. IDENTIFICACIÓN — ¿Te reconoces?
+     ================================================ -->
+<section class="identify">
+  <div class="container fade-in">
+    <span class="eyebrow">¿Cuántas de estas frases te describen?</span>
+    <h2>Esto no es cansancio normal.<br>Es agotamiento del cuidador.</h2>
+    <p class="lead">Si te identificas con al menos tres de estas, llevas más tiempo de lo que crees cargando sin apoyo.</p>
     <div class="ache-grid">
-      <div class="ache"><span class="tag">La culpa</span><p>Sientes culpa cuando descansas. Culpa cuando te enojas. Culpa cuando, por un segundo, deseas que tu vida fuera distinta. Una culpa que nunca te da tregua.</p></div>
-      <div class="ache"><span class="tag">La soledad</span><p>Estás rodeada de gente — y aun así te sientes completamente sola. Nadie pregunta cómo estás tú. Todos preguntan cómo está él, cómo está ella.</p></div>
-      <div class="ache"><span class="tag">El agotamiento</span><p>No es solo cansancio físico. Es un cansancio que se mete en los huesos, en el ánimo, en las ganas. Duermes y despiertas igual de exhausta.</p></div>
-      <div class="ache"><span class="tag">La pérdida de identidad</span><p>¿Cuándo fue la última vez que alguien te preguntó qué quieres tú, qué sientes tú, quién eres tú — más allá de ser "la que cuida"?</p></div>
+      <div class="ache"><span class="tag">😔</span><p><strong>Sientes culpa cuando descansas</strong>Como si descansar fuera una traición a quien cuidas.</p></div>
+      <div class="ache"><span class="tag">😶‍🌫️</span><p><strong>Ya no sabes quién eres tú</strong>Tu vida entera gira alrededor de otra persona. La tuya quedó en pausa.</p></div>
+      <div class="ache"><span class="tag">🌑</span><p><strong>Estás sola aunque estés rodeada</strong>Nadie pregunta cómo estás tú. Solo preguntan por él, por ella.</p></div>
+      <div class="ache"><span class="tag">🪫</span><p><strong>Duermes y despiertas igual de agotada</strong>No es cansancio físico — es un agotamiento que se mete en los huesos.</p></div>
+      <div class="ache"><span class="tag">😤</span><p><strong>A veces sientes ira sin explicación</strong>Y luego sientes culpa por haberla sentido. Un ciclo que no para.</p></div>
+      <div class="ache"><span class="tag">🤐</span><p><strong>Hay cosas que no te puedes permitir decir</strong>Ni a tu familia, ni en voz alta, ni a ti misma.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ====================================================
-     MINI AUTHOR — credibilidad temprana
-     ==================================================== -->
+<!-- MINI AUTHOR STRIP -->
 <div class="mini-author">
   <div class="container">
     <div class="mini-author-photo">
@@ -503,184 +481,114 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"
   </div>
 </div>
 
-<!-- ====================================================
-     3. REENCUADRE
-     ==================================================== -->
+<!-- ================================================
+     4. REFRAME — No estás fallando, pero necesitas actuar
+     ================================================ -->
 <section class="reframe">
   <div class="container fade-in">
-    <span class="eyebrow">Antes de seguir, necesitas escuchar esto</span>
-    <div class="lines">
-      <p>No eres débil.</p>
-      <p>No estás fallando.</p>
-      <p class="true">Simplemente has estado cargando demasiado, durante demasiado tiempo, sin nadie que cargara contigo.</p>
-    </div>
+    <span class="eyebrow">Antes de seguir</span>
+    <h2>No estás fallando.<br>Pero si no haces nada,<br>sí te vas a romper.</h2>
+    <p>No eres débil. No eres mala cuidadora. Estás agotada porque llevas demasiado tiempo dando sin que nadie te dé a ti.</p>
+    <p>Eso no se arregla esperando. Se arregla con apoyo — el que nunca tuviste.</p>
     <div class="divider-gold"></div>
-    <p class="final">Eso no se arregla con más fuerza de voluntad. Se arregla con apoyo real — el que nunca tuviste.</p>
+    <p class="callout">"Una cuidadora que no se cuida no puede cuidar bien a nadie.<br>Eso no es egoísmo. Es supervivencia."</p>
   </div>
 </section>
 
-<!-- ====================================================
-     4. MECANISMO ÚNICO — Método Soltar-Sanar™
-     ==================================================== -->
-<section class="mechanism">
-  <div class="container fade-in">
-    <div class="mechanism-card">
-      <span class="mechanism-name">El Método Soltar-Sanar™ de Vanessa Umaña</span>
-      <span class="eyebrow">Por qué funciona cuando otros fallan</span>
-      <h2>Primero soltar, después sanar</h2>
-      <p class="sub">La mayoría de los recursos para cuidadoras te piden hacer más. El Método Soltar-Sanar™ hace lo contrario.</p>
-      <p>Tal vez ya has intentado "organizarte mejor", seguir nuevas rutinas o llenar agendas. Y cada intento terminó pareciendo otra obligación más encima de todo lo que ya haces.</p>
-      <p>Durante años, a las cuidadoras se les han ofrecido soluciones que se traducen en más carga:</p>
-      <ul>
-        <li>Más rutinas que cumplir, incluso cuando no tienes energía.</li>
-        <li>Más listas que se convierten en recordatorios de todo lo pendiente.</li>
-        <li>Más hábitos que requieren disciplina que ya no puedes sostener.</li>
-      </ul>
-      <p>Una cuidadora agotada no necesita sumar. Lo que necesita, antes que nada, es un lugar donde pueda <em>soltar</em> lo que lleva cargando: culpa que no le pertenece, tristeza que nunca pudo nombrar, una carga emocional tan habitual que ya ni la reconoce.</p>
-      <p>Cuando lo que sientes tiene un espacio para salir — en palabras, en papel, en pequeños momentos para ti — tu mente deja de tratar de sostenerlo todo sola. Ese es el mecanismo: menos peso interno, no más eficiencia.</p>
-      <p class="quote">"Un corazón agotado no necesita más tareas. Necesita espacio para respirar."</p>
-    </div>
-  </div>
-</section>
-
-<!-- ====================================================
-     5. LA SOLUCIÓN
-     ==================================================== -->
+<!-- ================================================
+     5. SOLUCIÓN
+     ================================================ -->
 <section class="solution">
   <div class="container fade-in">
-    <span class="badge">🤍 Creado por y para cuidadoras como tú</span>
-    <h2>El sistema de apoyo emocional que ninguna cuidadora debería no tener</h2>
-    <p class="desc">No es un libro más. No es otra lista de tareas. Es un espacio de apoyo emocional creado específicamente para mujeres que cuidan a un padre, una madre, un esposo o un familiar — y que necesitan que alguien, por fin, también cuide de ellas.</p>
-    <p class="promise">"Puedes seguir cuidando a quien amas, sin perderte a ti misma en el camino."</p>
+    <span class="badge">🤍 Creado por psicóloga clínica para cuidadoras reales</span>
+    <h2>Un sistema de apoyo emocional creado exactamente para lo que estás viviendo</h2>
+    <p class="desc">No es otro libro de autoayuda. No es una lista de tareas más. Es un sistema de 5 recursos digitales diseñados para acompañarte en los momentos más difíciles del cuidado — con herramientas reales para soltar la culpa, reducir el agotamiento y volver a encontrarte.</p>
+    <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn">Quiero empezar a cuidarme hoy — $17</a>
+    <div class="pay-secure light">🔒 Acceso inmediato · Garantía 14 días · Precio sube el 3 de julio</div>
   </div>
 </section>
 
-<!-- ====================================================
-     MOCKUPS
-     ==================================================== -->
+<!-- MOCKUPS -->
 <section class="mockups">
   <div class="container fade-in">
     <span class="eyebrow">Tu sistema completo</span>
     <h2>Así se verá tu sistema de apoyo</h2>
-    <p class="intro">Cinco recursos diseñados para ayudarte a reducir la culpa, recuperar tu energía emocional y volver a encontrarte contigo misma mientras cuidas a quien amas.</p>
+    <p class="intro">Cinco recursos diseñados para los momentos más difíciles — cuando ya no puedes más, cuando la culpa te aplasta, cuando necesitas que alguien te cuide a ti.</p>
     <div class="mockup-stack">
       <div class="mockup-main">
-        <img src="product-main.png" alt="El Cuidador Agotado — Guía principal" loading="lazy">
-        <span class="main-label">✓ Guía principal del sistema</span>
+        <img src="product-main.png" alt="El Cuidador Agotado" loading="lazy">
+        <span class="main-label">✓ Sistema principal</span>
       </div>
       <div class="mockup-bonuses">
-        <div class="mockup-bonus"><img src="bonus-4.png" alt="Cartas que Nunca Te Atreviste a Escribir" loading="lazy"><span class="bonus-label">Cartas terapéuticas</span></div>
-        <div class="mockup-bonus"><img src="bonus-3.png" alt="Kit de Emergencia Emocional" loading="lazy"><span class="bonus-label">Kit de Emergencia</span></div>
-        <div class="mockup-bonus"><img src="bonus-2.png" alt="Diario de Reconexión Personal" loading="lazy"><span class="bonus-label">Diario personal</span></div>
-        <div class="mockup-bonus"><img src="bonus-1.png" alt="Agenda del Cuidador Consciente" loading="lazy"><span class="bonus-label">Agenda de apoyo</span></div>
+        <div class="mockup-bonus"><img src="bonus-4.png" alt="Cartas terapéuticas" loading="lazy"><span class="bonus-label">Cartas terapéuticas</span></div>
+        <div class="mockup-bonus"><img src="bonus-3.png" alt="Kit de Emergencia" loading="lazy"><span class="bonus-label">Kit de Emergencia</span></div>
+        <div class="mockup-bonus"><img src="bonus-2.png" alt="Diario personal" loading="lazy"><span class="bonus-label">Diario personal</span></div>
+        <div class="mockup-bonus"><img src="bonus-1.png" alt="Agenda de apoyo" loading="lazy"><span class="bonus-label">Agenda de apoyo</span></div>
       </div>
     </div>
-    <p class="mockup-note">Acceso inmediato. Léelos desde tu teléfono, tablet o computador siempre que necesites apoyo.</p>
+    <p class="mockup-note">Acceso inmediato desde tu teléfono, tablet o computador.</p>
   </div>
 </section>
 
-<!-- ====================================================
-     6. SITUACIONES CONCRETAS
-     ==================================================== -->
-<section class="benefits">
-  <div class="container fade-in">
-    <span class="eyebrow" style="display:block;text-align:center;">Cómo se vive en el día a día</span>
-    <h2>Situaciones concretas que acompañan tu realidad.</h2>
-    <div class="benefit-list">
-      <div class="benefit"><div class="num">1</div><div><h3>Cuando sientes que vas a explotar pero todavía tienes que seguir cuidando</h3><p>Pasos pequeños para esos momentos en que el cuerpo dice "ya no puedo más" pero la situación no se detiene.</p></div></div>
-      <div class="benefit"><div class="num">2</div><div><h3>Cuando la culpa aparece cada vez que intentas descansar</h3><p>Micro-prácticas que te ayudan a tomar un respiro sin sentir que estás fallando.</p></div></div>
-      <div class="benefit"><div class="num">3</div><div><h3>Cuando llevas meses guardándote cosas que no puedes decir en voz alta</h3><p>Guías de escritura para poner por escrito lo que no te atreves a nombrar.</p></div></div>
-      <div class="benefit"><div class="num">4</div><div><h3>Cuando no sabes si estás cansada o al borde del colapso emocional</h3><p>Señales concretas para diferenciar un cansancio normal de un agotamiento que ya cruzó la línea.</p></div></div>
-      <div class="benefit"><div class="num">5</div><div><h3>Cuando nadie pregunta cómo estás tú</h3><p>Recursos para construir tu propio espacio de validación cuando el entorno solo pregunta por la persona que cuidas.</p></div></div>
-      <div class="benefit"><div class="num">6</div><div><h3>Cuando quieres recordar quién eres más allá del rol de cuidadora</h3><p>Ejercicios simples para reconectar con partes de ti que quedaron en pausa.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ====================================================
-     7. QUÉ RECIBES — Cartas primero
-     ==================================================== -->
+<!-- ================================================
+     6. QUÉ RECIBES
+     ================================================ -->
 <section class="receive">
   <div class="container fade-in">
-    <span class="eyebrow">Tu sistema completo de apoyo</span>
-    <h2>Esto es lo que vas a recibir</h2>
-    <p class="intro">Cinco recursos que forman un solo sistema de cuidado emocional. Cada uno diseñado para un momento distinto de tu día — y de tu proceso.</p>
+    <span class="eyebrow">Lo que vas a recibir hoy</span>
+    <h2>Cinco recursos. Un sistema. Una sola intención: cuidarte a ti.</h2>
+    <p class="intro">Cada recurso fue diseñado para un momento específico — el momento de crisis, el momento de culpa, el momento en que ya no recuerdas quién eres.</p>
     <div class="resource-grid">
-
-      <!-- Cartas PRIMERO — el recurso más emocional -->
       <div class="resource featured-res">
         <div class="icon">✉️</div>
         <div>
           <span class="lbl">El recurso más poderoso</span>
           <h3>Cartas que Nunca Te Atreviste a Escribir <span class="hero-badge">★ Favorito</span></h3>
-          <p>Un espacio seguro para decir en papel todo lo que jamás te has permitido decir en voz alta. A la persona que cuidas, a ti misma del pasado, a la vida que dejaste en pausa. Más de 200 cuidadoras lo describen como "la primera vez que alguien me dio permiso de decir la verdad."</p>
+          <p>Un espacio para decir en papel todo lo que jamás pudiste decir en voz alta. A la persona que cuidas, a ti misma del pasado, a la vida que dejaste en pausa. Más de 200 cuidadoras lo describen como "la primera vez que alguien me dio permiso de ser honesta."</p>
         </div>
       </div>
-
       <div class="resource">
         <div class="icon">🆘</div>
-        <div><span class="lbl">Para los días difíciles</span><h3>Kit de Emergencia Emocional</h3><p>Herramientas rápidas para esos momentos en que sientes que ya no puedes más — pasos concretos para calmarte cuando todo se siente demasiado.</p></div>
+        <div><span class="lbl">Para los días de crisis</span><h3>Kit de Emergencia Emocional</h3><p>Pasos concretos para los momentos en que sientes que ya no puedes más. No para después — para ahora mismo.</p></div>
       </div>
-
       <div class="resource">
         <div class="icon">📖</div>
-        <div><span class="lbl">La guía principal</span><h3>El Cuidador Agotado</h3><p>El corazón del sistema. Te ayuda a entender por qué te sientes así, a soltar la culpa que no te pertenece, y a empezar a cuidarte sin dejar de cuidar a quien amas.</p></div>
+        <div><span class="lbl">La guía principal</span><h3>El Cuidador Agotado</h3><p>El corazón del sistema. Entiende por qué te sientes así, suelta la culpa que no te pertenece, y empieza a cuidarte sin dejar de cuidar a quien amas.</p></div>
       </div>
-
       <div class="resource">
         <div class="icon">🌙</div>
-        <div><span class="lbl">Para reconectar contigo</span><h3>Diario de Reconexión Personal</h3><p>21 días para volver a encontrarte. Preguntas suaves que te invitan a recordar quién eres tú, lejos de las etiquetas de "cuidadora" o "fuerte".</p></div>
+        <div><span class="lbl">Para reconectar contigo</span><h3>Diario de Reconexión Personal</h3><p>21 días para volver a encontrarte. Para recordar quién eres más allá del rol de cuidadora.</p></div>
       </div>
-
       <div class="resource">
         <div class="icon">🗓️</div>
-        <div><span class="lbl">Para tu día a día</span><h3>Agenda del Cuidador Consciente</h3><p>Un espacio para organizar el cuidado del otro sin perder de vista tu salud, tu identidad y tu paz. Cuidar con orden alivia; cuidar en el caos, agota más.</p></div>
+        <div><span class="lbl">Para tu día a día</span><h3>Agenda del Cuidador Consciente</h3><p>Organiza el cuidado del otro sin perderte a ti misma. Cuidar con orden alivia; cuidar en el caos, agota más.</p></div>
       </div>
-
-    </div>
-    <span class="core-tag">Un sistema. Cinco apoyos. Una sola intención: cuidarte a ti.</span>
-  </div>
-</section>
-
-<!-- ====================================================
-     8. RECURSO DESTACADO — Cartas
-     ==================================================== -->
-<section class="featured">
-  <div class="container fade-in">
-    <div class="featured-card">
-      <span class="eyebrow">El recurso que más toca el corazón</span>
-      <h2>"Cartas que Nunca Te Atreviste a Escribir"</h2>
-      <p>Hay cosas que una cuidadora carga en silencio porque sentiría que es egoísta decirlas, o porque no hay nadie a quien decírselas sin sentirse culpable. Este recurso te entrega ese espacio que nunca tuviste: un lugar para escribir, sin filtro, lo que realmente sientes.</p>
-      <p class="quote">"A veces no necesitamos una solución. Necesitamos un lugar honesto donde poner lo que llevamos por dentro."</p>
-      <p>Con instrucciones suaves y cartas guía (a la persona que cuidas, a ti misma del pasado, a la vida que dejaste en pausa), este recurso te ayuda a soltar en papel lo que el cuerpo lleva guardando hace meses — o años.</p>
     </div>
   </div>
 </section>
 
-<!-- ====================================================
-     9. TESTIMONIOS — con nombres completos y ciudades
-     ==================================================== -->
+<!-- ================================================
+     7. TESTIMONIOS
+     ================================================ -->
 <section class="testimonials">
   <div class="container fade-in">
-    <span class="eyebrow" style="display:block;text-align:center;">Voces que se parecen a la tuya</span>
-    <h2>Otras cuidadoras, contando lo que sintieron</h2>
+    <span class="eyebrow" style="display:block;text-align:center;">Voces reales</span>
+    <h2>Lo que dicen las cuidadoras que ya lo tienen</h2>
     <div class="t-grid">
-
       <div class="t-card">
         <div class="stars">★★★★★</div>
-        <p class="body">"Llevaba casi cuatro años cuidando a mi papá después de un accidente. Cada vez que pensaba en descansar me venía una culpa enorme. Un día me encontré llorando en silencio, porque por fin alguien ponía en palabras el cansancio que yo no sabía cómo explicar. Cada vez que siento que voy a explotar, abro el Kit de Emergencia Emocional. No evita los días difíciles, pero evita que yo me rompa sin entender qué me pasa."</p>
+        <p class="body">"Llevaba casi cuatro años cuidando a mi papá. Cada vez que pensaba en descansar me venía una culpa enorme. Un día me encontré llorando en silencio, porque por fin alguien ponía en palabras el cansancio que yo no sabía cómo explicar. El Kit de Emergencia Emocional evita que me rompa en los peores momentos."</p>
         <div class="who">
           <div class="t-avatar-placeholder">M</div>
           <div class="t-who-text">
             <span class="t-name">María González</span>
-            <span class="t-role">54 años · Miami, FL · Hija cuidadora de su padre</span>
+            <span class="t-role">54 años · Miami, FL · Hija cuidadora</span>
           </div>
         </div>
       </div>
-
       <div class="t-card">
         <div class="stars">★★★★★</div>
-        <p class="body">"Cuido a mi esposo desde que enfermó hace dos años. Me sentía una 'mala esposa' cada vez que pensaba en la vida que dejé en pausa. Empecé con la carta a mí misma del pasado. Terminé escribiendo cosas que jamás habría dicho en voz alta: que tenía miedo, que extrañaba mi trabajo, que me dolía ver mi matrimonio reducido a cuidados médicos. Cerré esa carta sintiendo que había soltado parte del peso."</p>
+        <p class="body">"Cuido a mi esposo desde que enfermó hace dos años. Me sentía una 'mala esposa' cada vez que pensaba en la vida que dejé en pausa. Empecé con la carta a mí misma del pasado. Terminé escribiendo cosas que jamás habría dicho en voz alta. Cerré esa carta sintiendo que había soltado parte del peso."</p>
         <div class="who">
           <div class="t-avatar-placeholder">A</div>
           <div class="t-who-text">
@@ -689,10 +597,9 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"
           </div>
         </div>
       </div>
-
       <div class="t-card">
         <div class="stars">★★★★★</div>
-        <p class="body">"Soy la única hija que vive cerca de mi mamá, así que todo el cuidado recae sobre mí. Una tarde, al borde del colapso, abrí el sistema en el celular y seguí un ejercicio para diferenciar cansancio de agotamiento emocional. Ese día hice una llamada que llevaba meses postergando para pedir ayuda. No cambió todo de golpe, pero me dio el lenguaje para decir en voz alta que ya no podía seguir igual."</p>
+        <p class="body">"Soy la única hija cerca de mi mamá. Una tarde al borde del colapso, abrí el sistema y seguí un ejercicio para diferenciar cansancio de agotamiento emocional. Ese día hice una llamada que llevaba meses postergando para pedir ayuda. No cambió todo de golpe, pero me dio el lenguaje para decir que ya no podía seguir igual."</p>
         <div class="who">
           <div class="t-avatar-placeholder">L</div>
           <div class="t-who-text">
@@ -701,159 +608,113 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ====================================================
-     10. HISTORIA DE ORIGEN
-     ==================================================== -->
-<section class="origin">
-  <div class="container fade-in">
-    <span class="eyebrow">Por qué existe este sistema</span>
-    <h2>¿Por qué existe este sistema?</h2>
-    <p>Durante años, la mayoría de las cuidadoras con las que he trabajado repiten una frase parecida: "Siento que estoy fallando". La dicen cuando se enojan, cuando se cansan, cuando piensan en descansar, incluso cuando se permiten llorar.</p>
-    <p>Sin embargo, cuando miro de cerca sus días, lo que aparece no es falta de compromiso, sino agotamiento profundo. Horas de cuidado, decisiones difíciles, noches en vela, miedo constante a que algo salga mal.</p>
-    <p>El problema es que casi nunca les han dicho que esa diferencia existe. Nadie les enseñó a cuidarse mientras cuidan, nadie les dio lenguaje para nombrar el cansancio emocional, y muy pocas han tenido apoyo psicológico sostenido.</p>
-    <p>Heredaron responsabilidades, pero no heredaron herramientas para sostener ese peso.</p>
-    <p class="close">Este sistema existe para ocupar ese espacio que nunca estuvo ahí cuando más lo necesitaban.</p>
-  </div>
-</section>
-
-<!-- ====================================================
-     11. ¿ESTO ES PARA TI?
-     ==================================================== -->
+<!-- ================================================
+     8. ¿ES PARA TI?
+     ================================================ -->
 <section class="foryou">
   <div class="container fade-in">
     <span class="eyebrow" style="display:block;text-align:center;">Hablemos con honestidad</span>
     <h2>¿Esto es para ti?</h2>
-    <p class="intro">Mira con calma estas dos listas y reconoce dónde estás hoy.</p>
+    <p class="intro">Dos listas. Sé honesta contigo misma.</p>
     <div class="foryou-grid">
       <div class="foryou-card yes">
         <h3>Esto es para ti si:</h3>
         <ul>
-          <li><span class="mark">✓</span><span>Cuidas a un familiar enfermo o dependiente.</span></li>
-          <li><span class="mark">✓</span><span>Sientes culpa cuando descansas.</span></li>
-          <li><span class="mark">✓</span><span>Llevas tiempo ignorando tus propias necesidades.</span></li>
-          <li><span class="mark">✓</span><span>Te cuesta pedir ayuda.</span></li>
-          <li><span class="mark">✓</span><span>Te sientes emocionalmente agotada.</span></li>
+          <li><span class="mark">✓</span><span>Cuidas a un familiar enfermo o dependiente y sientes que te estás perdiendo.</span></li>
+          <li><span class="mark">✓</span><span>La culpa aparece cada vez que intentas descansar.</span></li>
           <li><span class="mark">✓</span><span>Ya no recuerdas la última vez que hiciste algo solo para ti.</span></li>
+          <li><span class="mark">✓</span><span>Necesitas apoyo emocional pero no tienes acceso a terapia.</span></li>
+          <li><span class="mark">✓</span><span>Sientes que en cualquier momento te vas a romper.</span></li>
         </ul>
       </div>
       <div class="foryou-card no">
         <h3>Esto no es para ti si:</h3>
         <ul>
-          <!-- CORREGIDO: eliminada la frase que mencionaba el PDF -->
           <li><span class="mark">✗</span><span>Buscas que alguien cuide a tu familiar en tu lugar.</span></li>
-          <li><span class="mark">✗</span><span>Prefieres seguir cargando sola antes que invertir 5 minutos en ti.</span></li>
+          <li><span class="mark">✗</span><span>Prefieres seguir sola antes que invertir en ti.</span></li>
           <li><span class="mark">✗</span><span>Crees que tus emociones no importan mientras el otro esté bien.</span></li>
-          <li><span class="mark">✗</span><span>Buscas productividad en lugar de apoyo emocional.</span></li>
+          <li><span class="mark">✗</span><span>Buscas productividad, no apoyo emocional.</span></li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ====================================================
-     QUIÉN ESTÁ DETRÁS — credenciales específicas
-     ==================================================== -->
+<!-- AUTHOR -->
 <section class="author">
   <div class="container fade-in">
-    <span class="eyebrow" style="display:block;text-align:center;">La persona detrás del sistema</span>
-    <h2>Quién está detrás de este sistema</h2>
-    <p class="author-sub">Porque confiar en quien creó este recurso también importa.</p>
+    <span class="eyebrow" style="display:block;text-align:center;">Quién está detrás</span>
     <div class="author-card">
-      <div class="author-photo">
-        <img src="author-photo.png" alt="Vanessa Umaña, Psicóloga">
-      </div>
+      <div class="author-photo"><img src="author-photo.png" alt="Vanessa Umaña"></div>
       <div class="author-name">Vanessa Umaña</div>
-      <div class="author-role">Psicóloga Clínica · Especialista en salud emocional del cuidador</div>
-
-      <!-- NUEVO: stats de credibilidad -->
+      <div class="author-role">Psicóloga Clínica · 8 años de experiencia</div>
       <div class="author-stats">
         <div class="author-stat"><div class="num">8+</div><div class="lbl">años de experiencia</div></div>
         <div class="author-stat"><div class="num">340+</div><div class="lbl">cuidadoras acompañadas</div></div>
         <div class="author-stat"><div class="num">200+</div><div class="lbl">usuarias del sistema</div></div>
       </div>
-
       <div class="author-bio">
-        <p>Durante 8 años he acompañado a personas y familias que atraviesan procesos de enfermedad, dependencia y cambios profundos. En ese camino comprendí una realidad que se repite: las cuidadoras suelen ser las últimas en recibir apoyo, a pesar de ser quienes sostienen gran parte del peso emocional del cuidado.</p>
-        <p>Más de 340 cuidadoras han pasado por mi consulta. Todas con historias distintas; todas con el mismo punto de quiebre. Este sistema nació de escuchar esas historias — y de saber exactamente en qué momento se rompen.</p>
-        <p class="author-quote">"Las cuidadoras no necesitan que les digan que son fuertes. Necesitan que alguien, por fin, las cuide a ellas."</p>
+        <p>Durante 8 años acompañé a familias que atraviesan procesos de enfermedad y dependencia. Lo que vi repetirse: las cuidadoras son las últimas en recibir apoyo, a pesar de ser quienes sostienen el mayor peso emocional.</p>
+        <p>Este sistema nació de escuchar 340 historias distintas con el mismo punto de quiebre.</p>
       </div>
-      <div class="author-credential">
-        <span class="chk">✓</span>
-        <span>Contenido creado y revisado desde una perspectiva profesional de salud emocional clínica.</span>
-      </div>
+      <p class="author-quote">"Las cuidadoras no necesitan que les digan que son fuertes. Necesitan que alguien, por fin, las cuide a ellas."</p>
     </div>
   </div>
 </section>
 
-<!-- ====================================================
-     12. FAQ
-     ==================================================== -->
+<!-- FAQ -->
 <section class="faq">
   <div class="container fade-in">
-    <span class="eyebrow" style="display:block;text-align:center;">Tus dudas, respondidas con honestidad</span>
-    <h2>Antes de seguir, hablemos de lo que estás pensando</h2>
+    <span class="eyebrow" style="display:block;text-align:center;">Resolvemos tus dudas</span>
+    <h2>Antes de seguir</h2>
     <details class="faq-item" open>
       <summary>"No tengo tiempo para esto." <span class="plus">+</span></summary>
-      <p class="a">El tiempo es justamente lo que más te falta. Por eso este sistema está diseñado en piezas pequeñas: cinco minutos aquí, una página ahí. No necesitas una hora libre — necesitas cinco minutos que sean solo tuyos, y eso sí lo tienes.</p>
+      <p class="a">Está diseñado en piezas pequeñas. Cinco minutos aquí, una página ahí. Cabe en los huecos del día — mientras esperas en una sala médica, en un descanso corto, antes de dormir.</p>
     </details>
     <details class="faq-item">
-      <summary>"Siento que es egoísta invertir en mí." <span class="plus">+</span></summary>
-      <p class="a">Esa culpa es exactamente lo que este sistema busca ayudarte a soltar. Cuidarte no le quita nada a la persona que amas — al contrario, te permite seguir cuidándola con más paciencia y menos resentimiento.</p>
+      <summary>"¿Realmente me va a ayudar?" <span class="plus">+</span></summary>
+      <p class="a">Lo que ofrece es lo que la mayoría de cuidadoras nunca han tenido: un espacio que valida lo que sientes, herramientas para los momentos difíciles, y permiso real para empezar a cuidarte. Más de 200 cuidadoras lo confirman.</p>
     </details>
     <details class="faq-item">
-      <summary>"¿Esto realmente va a ayudarme?" <span class="plus">+</span></summary>
-      <p class="a">Este sistema no promete resolver tu situación de cuidado. Lo que sí ofrece es algo que muchas cuidadoras no han tenido nunca: un espacio que valida lo que sientes, herramientas para los momentos difíciles, y permiso real para empezar a cuidarte.</p>
-    </details>
-    <details class="faq-item">
-      <summary>"¿Y si ya estoy demasiado agotada para empezar algo nuevo?" <span class="plus">+</span></summary>
-      <p class="a">Justamente por eso está hecho así: no exige energía que no tienes. Es un lugar donde puedes llegar como estás — cansada, desbordada, sin fuerzas — y encontrar alivio ahí mismo, sin esfuerzo adicional.</p>
+      <summary>"¿Y si ya estoy demasiado agotada para empezar?" <span class="plus">+</span></summary>
+      <p class="a">Justamente por eso está hecho así — no exige energía que no tienes. Puedes llegar agotada y encontrar alivio ahí mismo, sin esfuerzo adicional.</p>
     </details>
     <details class="faq-item">
       <summary>¿Cuándo lo recibo? <span class="plus">+</span></summary>
-      <p class="a">El acceso es inmediato. En cuanto completes tu compra recibirás un correo con los enlaces de descarga. En menos de 2 minutos tendrás el sistema abierto en tu dispositivo.</p>
-    </details>
-    <details class="faq-item">
-      <summary>¿Puedo leerlo desde mi teléfono? <span class="plus">+</span></summary>
-      <p class="a">Sí. Muchas cuidadoras lo abren en el celular en los pocos minutos que tienen — mientras esperan en una sala médica, durante un descanso corto, o antes de dormir. Está pensado para caber en esos huecos pequeños del día.</p>
+      <p class="a">Inmediatamente. En menos de 2 minutos después de tu compra, el sistema estará en tu correo.</p>
     </details>
     <details class="faq-item">
       <summary>¿Es seguro pagar aquí? <span class="plus">+</span></summary>
-      <p class="a">Sí, completamente. El pago lo procesa LemonSqueezy, una plataforma utilizada por miles de creadores en todo el mundo. Nunca vemos ni almacenamos los datos de tu tarjeta — todo ocurre en servidores seguros con cifrado SSL. Puedes pagar con Visa, Mastercard o PayPal.</p>
-      <p class="a" style="margin-top:8px;font-size:13.5px;opacity:0.7;">🔒 Pago protegido y cifrado.</p>
-    </details>
-    <details class="faq-item">
-      <summary>¿Esto sustituye la terapia psicológica? <span class="plus">+</span></summary>
-      <p class="a">No. Este sistema no sustituye la atención psicológica profesional. Su objetivo es ofrecer acompañamiento emocional y herramientas prácticas para el día a día. Si sientes que necesitas atención profesional, te animamos a buscarlo — este sistema puede ser un complemento, no un reemplazo.</p>
+      <p class="a">Sí. El pago lo procesa LemonSqueezy — plataforma usada por miles de creadores. Nunca vemos ni almacenamos datos de tu tarjeta. Pago con Visa, Mastercard o PayPal. 🔒 Cifrado SSL.</p>
     </details>
   </div>
 </section>
 
-<!-- ====================================================
-     13. OFERTA
-     ==================================================== -->
+<!-- ================================================
+     9. OFERTA 3X — URGENCIA MÁXIMA
+     ================================================ -->
 <section class="offer" id="oferta">
   <div class="container fade-in">
-    <span class="eyebrow">Tu sistema completo de apoyo</span>
-    <h2>Un sistema que vale $121 USD.<br>Hoy, durante el lanzamiento, no pagarás eso.</h2>
+    <span class="eyebrow">Tu decisión, ahora</span>
+    <h2>Un sistema que vale $121 USD.</h2>
+    <p class="sub">Durante el lanzamiento, no pagarás eso. Pero el precio sube el 3 de julio.</p>
 
     <div class="price-block">
-      <div class="launch-badge">✦ Precio de lanzamiento — termina el 3 de julio</div>
+      <div class="launch-badge">⏳ Precio de lanzamiento · Termina el 3 de julio</div>
       <div class="price-row-value">Valor total del sistema</div>
       <div class="price-value-strike">$121 USD</div>
       <div class="price-divider"></div>
-      <div class="price-normal-row">Precio normal: <span class="strike">$47 USD</span></div>
-      <div class="price-today-label">Hoy solo</div>
+      <div class="price-today-label">Hoy, solo por el lanzamiento</div>
       <div class="price-today">
         <span class="curr">$</span>
         <span class="amount">17</span>
         <span class="usd">USD</span>
       </div>
-      <p class="price-description">Menos de lo que cuesta una sola hora de terapia ($100–$200). Este sistema estará contigo cada vez que lo necesites — no una hora, sino siempre que lo abras.</p>
+      <p class="price-description">Menos de lo que cuesta una sola hora de terapia. Este sistema estará contigo cada vez que lo necesites — no una hora, siempre.</p>
     </div>
 
     <div class="value-stack">
@@ -863,60 +724,56 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"
       <div class="vrow"><span>Diario de Reconexión Personal</span><span class="price">$21</span></div>
       <div class="vrow"><span>Agenda del Cuidador Consciente</span><span class="price">$18</span></div>
       <div class="vtotal">
-        <span class="lbl">Hoy, todo tu sistema:</span>
+        <span class="lbl">Hoy, todo el sistema:</span>
         <span class="big">$17 USD</span>
       </div>
     </div>
 
-    <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn">Sí, quiero empezar hoy — $17 USD</a>
-    <div class="pay-secure">🔒 Pago 100% seguro &nbsp;·&nbsp; Visa &nbsp;·&nbsp; Mastercard &nbsp;·&nbsp; PayPal</div>
+    <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn">Quiero dejar de sentirme así hoy — $17</a>
+    <div class="pay-secure">🔒 Pago seguro &nbsp;·&nbsp; Visa &nbsp;·&nbsp; Mastercard &nbsp;·&nbsp; PayPal</div>
     <div class="cta-micro">
-      <span class="l1">Acceso inmediato a los 5 recursos digitales</span>
-      <span class="l2">Recíbelos en tu correo en menos de 2 minutos</span>
+      <span class="l1">Acceso inmediato a los 5 recursos</span>
+      <span class="l2">En menos de 2 minutos están en tu correo</span>
     </div>
 
-    <!-- GARANTÍA REESCRITA — emocional y personal -->
     <div class="guarantee-box">
       <span class="shield">🛡️</span>
       <h4>La garantía personal de Vanessa</h4>
-      <p>Abre las Cartas que Nunca Te Atreviste a Escribir. Haz el primer ejercicio. Si en 48 horas no sientes que algo se alivió — aunque sea una sola respiración más profunda — escríbeme y te devuelvo cada centavo. Sin formularios, sin esperas, sin preguntas incómodas. Tienes 14 días completos.</p>
+      <p>Abre las Cartas que Nunca Te Atreviste a Escribir. Haz el primer ejercicio. Si en 48 horas no sientes que algo se alivió — escríbeme y te devuelvo cada centavo. Sin preguntas. Tienes 14 días completos.</p>
     </div>
   </div>
 </section>
 
-<!-- ====================================================
-     CIERRE EMOCIONAL
-     ==================================================== -->
+<!-- CLOSING -->
 <section class="closing">
   <div class="container fade-in">
-    <span class="eyebrow">Antes de irte, recuerda esto</span>
-    <h2>Has pasado tanto tiempo preguntando <em>"¿cómo está él? ¿cómo está ella?"</em><br>Hoy alguien te pregunta a ti: ¿cómo estás tú?</h2>
-    <p>No tienes que cargarlo sola. No tienes que esperar a derrumbarte para merecer ayuda. Mereces cuidado hoy, no solo cuando ya no puedas más.</p>
-    <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn">Sí, quiero empezar hoy — $17 USD</a>
-    <div class="pay-secure light">🔒 Pago 100% seguro &nbsp;·&nbsp; Visa &nbsp;·&nbsp; Mastercard &nbsp;·&nbsp; PayPal</div>
-    <span class="cta-guarantee">Acceso inmediato + garantía de devolución de 14 días</span>
-    <div class="sign">Con cariño, para todas las que cuidan sin que nadie las cuide a ellas.</div>
+    <span class="eyebrow">Una última cosa</span>
+    <h2>Llevas meses preguntando<br><em>¿cómo está él? ¿cómo está ella?</em><br>Hoy alguien te pregunta a ti.</h2>
+    <p>No tienes que colapsar para merecer ayuda. No tienes que esperar a estar en crisis para empezar a cuidarte. Puedes empezar hoy — por $17.</p>
+    <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn">Sí, necesito esto ahora — $17 USD</a>
+    <div class="pay-secure light">🔒 Pago seguro · Acceso inmediato · Garantía 14 días</div>
+    <span class="cta-guarantee">El precio sube el 3 de julio</span>
   </div>
 </section>
 
-<!-- P.D. -->
+<!-- PS -->
 <section class="ps-section">
   <div class="container fade-in">
-    <span class="ps-label">P.D. Antes de irte...</span>
-    <p class="ps-body">Si después de 14 días sientes que este sistema no era para ti, te devuelvo cada centavo. Sin preguntas. Lo único que puedes perder es el agotamiento emocional que llevas cargando desde hace demasiado tiempo.</p>
-    <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn">Sí, quiero empezar hoy — $17 USD</a>
-    <div class="pay-secure">🔒 Pago 100% seguro &nbsp;·&nbsp; Visa &nbsp;·&nbsp; Mastercard &nbsp;·&nbsp; PayPal</div>
-    <span class="ps-sub">Acceso inmediato &nbsp;•&nbsp; Garantía 14 días &nbsp;•&nbsp; Precio termina el 3 de julio</span>
+    <span class="ps-label">P.D. Antes de cerrar esta página</span>
+    <p class="ps-body">Cada día que pasa sin apoyo es un día más que el agotamiento se asienta. La garantía de 14 días existe para que no tengas ningún riesgo. Lo único que puedes perder es seguir igual.</p>
+    <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn">Quiero empezar hoy — $17 USD</a>
+    <div class="pay-secure">🔒 Pago seguro &nbsp;·&nbsp; Acceso inmediato</div>
+    <span class="ps-sub">Precio de lanzamiento termina el 3 de julio</span>
   </div>
 </section>
 
-<footer>
-  © El Cuidador Agotado — Un sistema de apoyo emocional para cuidadoras. Todos los derechos reservados.
+<footer style="text-align:center;padding:36px 0;font-size:13px;color:var(--ink);opacity:0.45;background:var(--cream-deep);">
+  © El Cuidador Agotado — Apoyo emocional para cuidadoras. Todos los derechos reservados.
 </footer>
 
 <!-- STICKY CTA MÓVIL -->
 <div class="sticky-cta" id="stickyCta">
-  <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57">Quiero cuidarme — $17 USD</a>
+  <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57">Quiero dejar de sentirme así — $17</a>
   <span class="sticky-note">Acceso inmediato · Garantía 14 días · Precio sube el 3 de julio</span>
 </div>
 
@@ -936,103 +793,79 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"
 </div>
 
 <script>
-// ============ INITIATECHECKOUT — todos los CTAs ============
+// INITIATECHECKOUT
 (function(){
-  var ctaUrl = 'https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57';
-  document.querySelectorAll('a[href="' + ctaUrl + '"]').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      fbq('track', 'InitiateCheckout', {
-        value: 17.00,
-        currency: 'USD',
-        num_items: 1
-      });
+  var url='https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57';
+  document.querySelectorAll('a[href="'+url+'"]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      fbq('track','InitiateCheckout',{value:17.00,currency:'USD',num_items:1});
     });
   });
 })();
 
-// ============ COUNTDOWN TIMER ============
+// COUNTDOWN
 (function(){
-  var deadline = new Date('2026-07-03T23:59:00');
+  var deadline=new Date('2026-07-03T23:59:00');
   function update(){
-    var now = new Date();
-    var diff = deadline - now;
-    if(diff <= 0){
-      document.querySelector('.countdown-bar').innerHTML = '⏳ <strong>Oferta de lanzamiento finalizada.</strong> El precio ha subido a $47 USD.';
-      return;
-    }
-    var h = Math.floor(diff/3600000);
-    var m = Math.floor((diff%3600000)/60000);
-    var s = Math.floor((diff%60000)/1000);
-    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
-    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
-    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+    var now=new Date();var diff=deadline-now;
+    if(diff<=0){document.querySelector('.countdown-bar').innerHTML='⚠️ <strong>Precio de lanzamiento finalizado.</strong> El precio ha subido a $47 USD.';return;}
+    var h=Math.floor(diff/3600000);
+    var m=Math.floor((diff%3600000)/60000);
+    var s=Math.floor((diff%60000)/1000);
+    document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
   }
-  update();
-  setInterval(update,1000);
+  update();setInterval(update,1000);
 })();
 
-// ============ STICKY CTA ============
+// STICKY CTA
 (function(){
-  var hero = document.querySelector('.hero');
-  var cta = document.getElementById('stickyCta');
-  if(!hero||!cta) return;
-  var shown = false;
+  var hero=document.querySelector('.hero');
+  var cta=document.getElementById('stickyCta');
+  if(!hero||!cta)return;
+  var shown=false;
   function onScroll(){
-    var b = hero.getBoundingClientRect().bottom;
-    if(b < 0 && !shown){cta.classList.add('visible');shown=true;}
-    else if(b >= 0 && shown){cta.classList.remove('visible');shown=false;}
+    var b=hero.getBoundingClientRect().bottom;
+    if(b<0&&!shown){cta.classList.add('visible');shown=true;}
+    else if(b>=0&&shown){cta.classList.remove('visible');shown=false;}
   }
   window.addEventListener('scroll',onScroll,{passive:true});
 })();
 
-// ============ EXIT POPUP ============
+// EXIT POPUP
 (function(){
-  var overlay = document.getElementById('exitOverlay');
-  var closeBtn = document.getElementById('exitClose');
-  var skipBtn = document.getElementById('exitSkip');
-  var shown = false;
-
-  function show(){ if(!shown){overlay.classList.add('show');shown=true;} }
-  function hide(){ overlay.classList.remove('show'); }
-
-  // Desktop: mouse leaves window
-  document.addEventListener('mouseleave',function(e){
-    if(e.clientY < 10) show();
-  });
-
-  // Mobile: scroll up fast (back-button intent)
-  var lastScroll = 0;
+  var overlay=document.getElementById('exitOverlay');
+  var closeBtn=document.getElementById('exitClose');
+  var skipBtn=document.getElementById('exitSkip');
+  var shown=false;
+  function show(){if(!shown){overlay.classList.add('show');shown=true;}}
+  function hide(){overlay.classList.remove('show');}
+  document.addEventListener('mouseleave',function(e){if(e.clientY<10)show();});
+  var lastScroll=0;
   window.addEventListener('scroll',function(){
-    var cur = window.scrollY;
-    if(lastScroll - cur > 80 && cur > 400) show();
-    lastScroll = cur;
+    var cur=window.scrollY;
+    if(lastScroll-cur>80&&cur>400)show();
+    lastScroll=cur;
   },{passive:true});
-
-  closeBtn && closeBtn.addEventListener('click',hide);
-  skipBtn && skipBtn.addEventListener('click',hide);
-  overlay && overlay.addEventListener('click',function(e){
-    if(e.target===overlay) hide();
-  });
+  closeBtn&&closeBtn.addEventListener('click',hide);
+  skipBtn&&skipBtn.addEventListener('click',hide);
+  overlay&&overlay.addEventListener('click',function(e){if(e.target===overlay)hide();});
 })();
 
 function submitExit(){
-  var email = document.getElementById('exitEmail').value;
-  if(!email || !email.includes('@')){
-    document.getElementById('exitEmail').style.borderColor='#E05028';
-    return;
-  }
-  fetch('https://formspree.io/f/xbdvodwv', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email: email })
+  var email=document.getElementById('exitEmail').value;
+  if(!email||!email.includes('@')){document.getElementById('exitEmail').style.borderColor='#E05028';return;}
+  fetch('https://formspree.io/f/xbdvodwv',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:email})
   }).then(function(){
-    fbq('track', 'Lead', { content_name: 'Kit de Emergencia Emocional' });
-    document.querySelector('.exit-popup').innerHTML =
-      '<span class="gift">✅</span><h3 style="margin-top:16px">¡Listo! Revisa tu correo.</h3><p>En unos minutos recibirás tu herramienta gratuita. Con cariño, Vanessa.</p>';
+    fbq('track','Lead',{content_name:'Kit de Emergencia Emocional'});
+    document.querySelector('.exit-popup').innerHTML='<span class="gift">✅</span><h3 style="margin-top:16px">¡Listo! Revisa tu correo.</h3><p>En unos minutos recibirás tu herramienta gratuita. Con cariño, Vanessa.</p>';
   }).catch(function(){
-    fbq('track', 'Lead', { content_name: 'Kit de Emergencia Emocional' });
-    document.querySelector('.exit-popup').innerHTML =
-      '<span class="gift">✅</span><h3 style="margin-top:16px">¡Listo! Revisa tu correo.</h3><p>En unos minutos recibirás tu herramienta gratuita. Con cariño, Vanessa.</p>';
+    fbq('track','Lead',{content_name:'Kit de Emergencia Emocional'});
+    document.querySelector('.exit-popup').innerHTML='<span class="gift">✅</span><h3 style="margin-top:16px">¡Listo! Revisa tu correo.</h3><p>En unos minutos recibirás tu herramienta gratuita. Con cariño, Vanessa.</p>';
   });
 }
 </script>
