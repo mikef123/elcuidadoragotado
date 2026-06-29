@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Cuánto te ha costado el cuidado? — Test gratuito para cuidadoras</title>
+<meta name="description" content="5 preguntas. Sin registro. Descubre tu nivel de agotamiento como cuidadora y qué puedes hacer hoy.">
+<meta property="og:title" content="¿Cuánto te ha costado realmente el cuidado?">
+<meta property="og:description" content="Test gratuito para cuidadoras. Descubre tu nivel de agotamiento en 2 minutos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6EFE3;--cream-deep:#EFE4D2;--paper:#FBF7EF;
+  --ink:#2E2A24;--navy:#233B52;--navy-deep:#16283A;
+  --cta:#E05028;--cta-hover:#C43E1A;--cta-shadow:rgba(224,80,40,0.45);
+  --terracotta:#C46A4B;--terracotta-soft:#E8B7A1;
+  --sage:#7C8A6E;--gold:#C9A35B;--urgent:#E8A020;
+  --line:rgba(46,42,36,0.13);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;-webkit-font-smoothing:antialiased;}
+body{font-family:'Lora',serif;background:var(--cream);color:var(--ink);font-size:17px;line-height:1.7;}
+h1,h2,h3{font-family:'Fraunces',serif;line-height:1.2;letter-spacing:-0.01em;}
+a{color:inherit;}
+
+/* ── LAYOUT ── */
+.quiz-wrap{min-height:100vh;display:flex;flex-direction:column;}
+
+/* ── PROGRESS ── */
+.progress-bar-wrap{background:var(--navy-deep);padding:14px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:100;}
+.progress-label{font-family:'Fraunces',serif;font-size:13px;color:rgba(246,239,227,0.65);white-space:nowrap;font-style:italic;}
+.progress-track{flex:1;height:5px;background:rgba(255,255,255,0.12);border-radius:99px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--cta);border-radius:99px;transition:width 0.55s cubic-bezier(0.4,0,0.2,1);width:0%;}
+
+/* ── SCREEN ── */
+.screen{display:none;flex:1;align-items:center;justify-content:center;padding:40px 20px;}
+.screen.active{display:flex;}
+.screen-inner{max-width:580px;width:100%;text-align:center;}
+
+/* ── INTRO ── */
+.intro-badge{display:inline-block;background:var(--navy-deep);color:var(--terracotta-soft);font-family:'Fraunces',serif;font-style:italic;font-size:13.5px;padding:6px 18px;border-radius:30px;margin-bottom:22px;}
+.intro-title{font-family:'Fraunces',serif;font-size:clamp(28px,5vw,46px);color:var(--navy-deep);margin-bottom:16px;}
+.intro-title em{font-style:italic;color:var(--cta);}
+.intro-sub{font-size:17px;color:var(--navy);opacity:0.78;max-width:460px;margin:0 auto 32px;}
+.intro-meta{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:36px;}
+.meta-item{font-size:13.5px;color:var(--navy);opacity:0.6;display:flex;align-items:center;gap:6px;}
+.meta-item .dot{width:6px;height:6px;border-radius:50%;background:var(--cta);display:inline-block;}
+.intro-note{font-size:13px;font-style:italic;color:var(--ink);opacity:0.45;margin-top:14px;}
+
+/* ── QUESTION ── */
+.q-eyebrow{font-family:'Fraunces',serif;font-style:italic;font-size:13px;color:var(--terracotta);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:16px;display:block;}
+.q-text{font-family:'Fraunces',serif;font-size:clamp(20px,3.5vw,30px);color:var(--navy-deep);margin-bottom:30px;max-width:520px;margin-left:auto;margin-right:auto;}
+.options{display:flex;flex-direction:column;gap:12px;}
+.option{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:18px 20px;text-align:left;cursor:pointer;transition:border-color .2s,background .2s,transform .15s;font-family:'Lora',serif;font-size:16px;color:var(--ink);display:flex;align-items:center;gap:14px;line-height:1.5;}
+.option:hover{border-color:var(--cta);background:var(--cream-deep);transform:translateY(-1px);}
+.option.selected{border-color:var(--cta);background:rgba(224,80,40,0.06);}
+.option .opt-letter{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cream-deep);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:13px;color:var(--navy);transition:background .2s,border-color .2s,color .2s;}
+.option.selected .opt-letter{background:var(--cta);border-color:var(--cta);color:#fff;}
+.option .opt-text{flex:1;}
+
+/* ── MICRO-TENSION ── */
+.micro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 53px);}
+.micro-inner{max-width:480px;text-align:center;padding:40px 24px;}
+.micro-line{width:36px;height:2px;background:var(--cta);margin:0 auto 26px;border-radius:2px;}
+.micro-text{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(20px,3.8vw,28px);color:var(--navy-deep);line-height:1.35;margin-bottom:18px;}
+.micro-sub{font-size:15px;color:var(--navy);opacity:0.65;max-width:380px;margin:0 auto;}
+.micro-timer{margin-top:28px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:13px;color:var(--ink);opacity:0.4;font-style:italic;}
+.micro-dots{display:flex;gap:5px;}
+.micro-dots span{width:6px;height:6px;border-radius:50%;background:var(--cta);opacity:0.3;animation:pulse 1.2s infinite;}
+.micro-dots span:nth-child(2){animation-delay:.2s;}
+.micro-dots span:nth-child(3){animation-delay:.4s;}
+@keyframes pulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+
+/* ── LOADING ── */
+.loading-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 53px);text-align:center;padding:40px 20px;}
+.loading-spinner{width:52px;height:52px;border:3px solid rgba(224,80,40,0.15);border-top-color:var(--cta);border-radius:50%;animation:spin 0.9s linear infinite;margin:0 auto 28px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.loading-text{font-family:'Fraunces',serif;font-size:22px;color:var(--navy-deep);margin-bottom:10px;}
+.loading-sub{font-size:15px;color:var(--navy);opacity:0.6;font-style:italic;}
+
+/* ── RESULT ── */
+.result-wrap{max-width:660px;margin:0 auto;padding:40px 20px 60px;text-align:center;}
+.result-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:30px;font-family:'Fraunces',serif;font-size:14px;font-weight:600;letter-spacing:0.05em;margin-bottom:24px;}
+.badge-1{background:rgba(124,138,110,0.15);color:var(--sage);border:1.5px solid rgba(124,138,110,0.3);}
+.badge-2{background:rgba(224,80,40,0.1);color:var(--cta);border:1.5px solid rgba(224,80,40,0.25);}
+.badge-3{background:rgba(22,40,58,0.08);color:var(--navy-deep);border:1.5px solid rgba(22,40,58,0.2);}
+.result-title{font-family:'Fraunces',serif;font-size:clamp(22px,4vw,34px);color:var(--navy-deep);margin-bottom:20px;max-width:580px;margin-left:auto;margin-right:auto;}
+.result-body{font-size:17px;color:var(--ink);max-width:560px;margin:0 auto 26px;opacity:0.88;line-height:1.75;}
+.result-divider{width:44px;height:2px;background:var(--cta);margin:26px auto;border-radius:2px;opacity:0.6;}
+
+/* MICRO RESET */
+.micro-reset{background:linear-gradient(135deg,rgba(124,138,110,0.1),rgba(201,163,91,0.08));border:1px solid rgba(124,138,110,0.2);border-radius:16px;padding:22px 28px;max-width:480px;margin:0 auto 24px;text-align:center;}
+.micro-reset p{font-family:'Fraunces',serif;font-style:italic;font-size:19px;color:var(--sage);line-height:1.55;margin:0;}
+.micro-reset p span{display:block;font-size:14px;color:var(--navy);opacity:0.55;font-family:'Lora',serif;font-style:normal;margin-top:8px;}
+
+/* BRIDGE */
+.result-bridge{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:28px 26px;margin:0 auto 30px;max-width:540px;text-align:center;}
+.result-bridge .bridge-eyebrow{font-family:'Fraunces',serif;font-style:italic;font-size:14px;color:var(--terracotta);letter-spacing:0.06em;text-transform:uppercase;display:block;margin-bottom:14px;}
+.result-bridge h3{font-family:'Fraunces',serif;font-size:clamp(18px,3vw,24px);color:var(--navy-deep);margin-bottom:16px;}
+.result-bridge ul{list-style:none;text-align:left;max-width:420px;margin:0 auto;}
+.result-bridge li{display:flex;align-items:flex-start;gap:11px;font-size:15.5px;margin-bottom:12px;color:var(--ink);}
+.result-bridge li:last-child{margin-bottom:0;}
+.result-bridge .ck{flex:none;width:20px;height:20px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;margin-top:2px;}
+
+/* PRODUCT BOX */
+.product-box{background:var(--navy-deep);border-radius:18px;padding:28px 24px;margin:0 auto 26px;max-width:540px;text-align:center;}
+.product-box .pb-eyebrow{font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);font-family:'Fraunces',serif;display:block;margin-bottom:12px;}
+.product-box h3{color:var(--paper);font-family:'Fraunces',serif;font-size:20px;margin-bottom:8px;}
+.product-box p{color:rgba(246,239,227,0.75);font-size:15px;max-width:420px;margin:0 auto 20px;line-height:1.65;}
+.product-box .price{font-family:'Fraunces',serif;font-size:44px;color:var(--paper);line-height:1;}
+.product-box .price .curr{font-size:22px;vertical-align:top;margin-top:8px;display:inline-block;}
+.product-box .price-note{font-size:13px;color:rgba(246,239,227,0.45);font-style:italic;margin-top:4px;}
+
+/* ── BOTONES ── */
+.btn{display:inline-block;background:var(--cta);color:#fff;font-family:'Fraunces',serif;font-weight:500;font-size:18px;padding:19px 40px;border-radius:40px;text-decoration:none;box-shadow:0 16px 32px -8px var(--cta-shadow);transition:transform .2s,box-shadow .2s,background .2s;border:2px solid rgba(255,255,255,0.15);cursor:pointer;letter-spacing:0.01em;width:100%;max-width:420px;}
+.btn:hover{transform:translateY(-2px);box-shadow:0 22px 38px -6px var(--cta-shadow);background:var(--cta-hover);}
+.btn-start{background:var(--navy-deep);box-shadow:0 16px 32px -8px rgba(22,40,58,0.4);}
+.btn-start:hover{background:#0D1B2A;box-shadow:0 22px 38px -6px rgba(22,40,58,0.5);}
+.btn-next{display:none;margin-top:22px;background:var(--navy-deep);box-shadow:0 10px 22px -6px rgba(22,40,58,0.3);max-width:340px;font-size:16px;padding:15px 32px;}
+.btn-next.visible{display:inline-block;}
+.pay-note{font-size:12.5px;color:var(--ink);opacity:0.45;font-style:italic;margin-top:12px;display:block;}
+
+/* GUARANTEE */
+.guarantee{display:inline-flex;align-items:center;gap:10px;background:var(--cream-deep);border:1px solid var(--line);border-radius:12px;padding:12px 18px;margin-top:16px;max-width:420px;}
+.guarantee .sh{font-size:22px;}
+.guarantee p{font-size:13.5px;color:var(--ink);opacity:0.78;text-align:left;line-height:1.5;}
+
+/* EMAIL CAPTURE */
+.email-section{background:var(--cream-deep);border:1px solid var(--line);border-radius:18px;padding:28px 24px;margin:24px auto 0;max-width:480px;text-align:center;}
+.email-section h4{font-family:'Fraunces',serif;font-size:18px;color:var(--navy-deep);margin-bottom:8px;}
+.email-section p{font-size:14.5px;color:var(--ink);opacity:0.78;margin-bottom:18px;line-height:1.6;}
+.email-form{display:flex;gap:10px;max-width:380px;margin:0 auto;}
+@media(max-width:480px){.email-form{flex-direction:column;}}
+.email-form input{flex:1;padding:13px 16px;border:1.5px solid var(--line);border-radius:10px;font-family:'Lora',serif;font-size:15px;color:var(--ink);background:var(--paper);outline:none;}
+.email-form input:focus{border-color:var(--cta);}
+.email-form button{background:var(--navy-deep);color:var(--paper);font-family:'Fraunces',serif;font-size:15px;padding:13px 20px;border-radius:10px;border:none;cursor:pointer;white-space:nowrap;}
+.email-skip{display:block;margin-top:12px;font-size:12px;color:var(--ink);opacity:0.4;cursor:pointer;font-style:italic;}
+
+/* ── FADE TRANSITIONS ── */
+.screen,.micro-wrap,.loading-wrap{animation:fadeIn 0.4s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── MOBILE ── */
+@media(max-width:540px){
+  .screen{padding:28px 16px;}
+  .result-wrap{padding:28px 16px 50px;}
+  .result-bridge,.product-box,.email-section{padding:22px 18px;}
+  .btn{font-size:16px;padding:17px 24px;}
+  .option{padding:15px 16px;}
+}
+</style>
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1567677244706210');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"/></noscript>
+</head>
+<body>
+<div class="quiz-wrap">
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-bar-wrap" id="progressBar" style="display:none;">
+    <span class="progress-label" id="progressLabel">Pregunta 1 de 5</span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  </div>
+
+  <!-- ══════════════════════════════
+       PANTALLA 0: INTRO
+  ══════════════════════════════ -->
+  <div class="screen active" id="s-intro">
+    <div class="screen-inner">
+      <span class="intro-badge">Test gratuito · Sin registro</span>
+      <h1 class="intro-title">¿Cuánto te ha costado<br><em>realmente</em> el cuidado?</h1>
+      <p class="intro-sub">5 preguntas honestas. Tu resultado es privado. Descubre tu nivel de agotamiento como cuidadora — y qué puedes hacer hoy.</p>
+      <div class="intro-meta">
+        <span class="meta-item"><span class="dot"></span> 2 minutos</span>
+        <span class="meta-item"><span class="dot"></span> 5 preguntas</span>
+        <span class="meta-item"><span class="dot"></span> Resultado inmediato</span>
+      </div>
+      <button class="btn btn-start" onclick="startQuiz()">Empezar el test →</button>
+      <span class="intro-note">Creado por Vanessa Umaña, Psicóloga Clínica · Más de 340 cuidadoras acompañadas</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       PREGUNTA 1
+  ══════════════════════════════ -->
+  <div class="screen" id="s-q1">
+    <div class="screen-inner">
+      <span class="q-eyebrow">Pregunta 1 de 5</span>
+      <p class="q-text">¿Cuánto tiempo llevas cuidando a alguien de forma activa?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(1,1)">
+          <span class="opt-letter">A</span>
+          <span class="opt-text">Menos de 6 meses</span>
+        </div>
+        <div class="option" onclick="selectOption(1,2)">
+          <span class="opt-letter">B</span>
+          <span class="opt-text">Entre 6 meses y 2 años</span>
+        </div>
+        <div class="option" onclick="selectOption(1,3)">
+          <span class="opt-letter">C</span>
+          <span class="opt-text">Más de 2 años</span>
+        </div>
+      </div>
+      <button class="btn btn-next" id="next-1" onclick="nextQuestion(1)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       PREGUNTA 2
+  ══════════════════════════════ -->
+  <div class="screen" id="s-q2">
+    <div class="screen-inner">
+      <span class="q-eyebrow">Pregunta 2 de 5</span>
+      <p class="q-text">¿Con qué frecuencia sientes que ya no tienes más para dar?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(2,1)">
+          <span class="opt-letter">A</span>
+          <span class="opt-text">Ocasionalmente — hay días buenos y días difíciles</span>
+        </div>
+        <div class="option" onclick="selectOption(2,2)">
+          <span class="opt-letter">B</span>
+          <span class="opt-text">Casi todos los días</span>
+        </div>
+        <div class="option" onclick="selectOption(2,3)">
+          <span class="opt-letter">C</span>
+          <span class="opt-text">Es mi estado permanente. Ya no recuerdo cómo se siente estar bien</span>
+        </div>
+      </div>
+      <button class="btn btn-next" id="next-2" onclick="nextQuestion(2)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       MICRO-TENSIÓN 1 (entre Q2 y Q3)
+  ══════════════════════════════ -->
+  <div id="s-micro1" style="display:none;">
+    <div class="micro-wrap">
+      <div class="micro-inner">
+        <div class="micro-line"></div>
+        <p class="micro-text">"Lo que describes no es cansancio ordinario."</p>
+        <p class="micro-sub">Las próximas preguntas van más profundo. Sé honesta contigo misma.</p>
+        <div class="micro-timer">
+          Continuando
+          <div class="micro-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       PREGUNTA 3
+  ══════════════════════════════ -->
+  <div class="screen" id="s-q3">
+    <div class="screen-inner">
+      <span class="q-eyebrow">Pregunta 3 de 5</span>
+      <p class="q-text">Cuando intentas descansar o hacer algo para ti, ¿cómo te sientes?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(3,1)">
+          <span class="opt-letter">A</span>
+          <span class="opt-text">Un poco culpable, pero puedo disfrutarlo</span>
+        </div>
+        <div class="option" onclick="selectOption(3,2)">
+          <span class="opt-letter">B</span>
+          <span class="opt-text">Muy culpable — me cuesta desconectarme aunque quiera</span>
+        </div>
+        <div class="option" onclick="selectOption(3,3)">
+          <span class="opt-letter">C</span>
+          <span class="opt-text">No descanso. La culpa es demasiado grande para permitirme parar</span>
+        </div>
+      </div>
+      <button class="btn btn-next" id="next-3" onclick="nextQuestion(3)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       MICRO-TENSIÓN 2 (entre Q3 y Q4) — EL CRÍTICO
+  ══════════════════════════════ -->
+  <div id="s-micro2" style="display:none;">
+    <div class="micro-wrap">
+      <div class="micro-inner">
+        <div class="micro-line"></div>
+        <p class="micro-text">"Esto no es solo cansancio.<br>Es algo más profundo."</p>
+        <p class="micro-sub">El agotamiento del cuidador tiene capas que van mucho más allá del cuerpo.</p>
+        <div class="micro-timer">
+          Continuando
+          <div class="micro-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       PREGUNTA 4
+  ══════════════════════════════ -->
+  <div class="screen" id="s-q4">
+    <div class="screen-inner">
+      <span class="q-eyebrow">Pregunta 4 de 5</span>
+      <p class="q-text">¿Hay emociones que guardas porque no hay espacio para expresarlas?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(4,1)">
+          <span class="opt-letter">A</span>
+          <span class="opt-text">Alguna vez, pero puedo hablarlo con alguien cercano</span>
+        </div>
+        <div class="option" onclick="selectOption(4,2)">
+          <span class="opt-letter">B</span>
+          <span class="opt-text">Frecuentemente — las guardo para no ser una carga</span>
+        </div>
+        <div class="option" onclick="selectOption(4,3)">
+          <span class="opt-letter">C</span>
+          <span class="opt-text">Siempre. Hay cosas que nunca podré decir en voz alta</span>
+        </div>
+      </div>
+      <button class="btn btn-next" id="next-4" onclick="nextQuestion(4)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       PREGUNTA 5
+  ══════════════════════════════ -->
+  <div class="screen" id="s-q5">
+    <div class="screen-inner">
+      <span class="q-eyebrow">Última pregunta</span>
+      <p class="q-text">¿Cuándo fue la última vez que pensaste en lo que <em>tú</em> quieres, sientes o necesitas?</p>
+      <div class="options">
+        <div class="option" onclick="selectOption(5,1)">
+          <span class="opt-letter">A</span>
+          <span class="opt-text">Esta semana</span>
+        </div>
+        <div class="option" onclick="selectOption(5,2)">
+          <span class="opt-letter">B</span>
+          <span class="opt-text">Hace meses</span>
+        </div>
+        <div class="option" onclick="selectOption(5,3)">
+          <span class="opt-letter">C</span>
+          <span class="opt-text">Ya no lo recuerdo. Mi vida gira completamente alrededor de otra persona</span>
+        </div>
+      </div>
+      <button class="btn btn-next" id="next-5" onclick="showLoading()">Ver mi resultado →</button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       LOADING
+  ══════════════════════════════ -->
+  <div id="s-loading" style="display:none;">
+    <div class="loading-wrap">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Calculando tu perfil…</p>
+      <p class="loading-sub">Analizando tus respuestas con el criterio clínico del sistema</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       RESULTADO 1: AGOTAMIENTO INICIAL (5-8)
+  ══════════════════════════════ -->
+  <div id="s-result1" style="display:none;">
+    <div class="result-wrap">
+      <div class="result-badge badge-1">🌱 Agotamiento Inicial</div>
+
+      <h2 class="result-title">"Estás en las etapas tempranas. Y ese es exactamente el mejor momento para actuar."</h2>
+
+      <p class="result-body">Todavía tienes recursos. Todavía puedes reconocer lo que sientes. Pero las señales ya están ahí — la culpa que aparece cuando descansas, el cansancio que se acumula sin salida, la sensación de que algo no está bien aunque no sepas exactamente qué.</p>
+
+      <p class="result-body">Las cuidadoras que actúan en esta etapa evitan el colapso. Las que esperan suelen buscar ayuda cuando ya están en crisis — y en ese punto, salir cuesta el doble.</p>
+
+      <div class="result-divider"></div>
+
+      <!-- MICRO RESET -->
+      <div class="micro-reset">
+        <p>Respira. Lo que sientes tiene nombre. Y tiene salida.<span>Reconocerlo ya es el primer paso.</span></p>
+      </div>
+
+      <!-- BRIDGE -->
+      <div class="result-bridge">
+        <span class="bridge-eyebrow">Pero no tienes que seguir así</span>
+        <h3>Todavía estás a tiempo de elegir diferente</h3>
+        <ul>
+          <li><span class="ck">✓</span><span>Aprender a descansar sin que la culpa te aplaste</span></li>
+          <li><span class="ck">✓</span><span>Tener palabras para lo que sientes — y eso ya alivia</span></li>
+          <li><span class="ck">✓</span><span>Cuidar mejor a quien amas porque primero te cuidas tú</span></li>
+        </ul>
+      </div>
+
+      <!-- PRODUCT -->
+      <div class="product-box">
+        <span class="pb-eyebrow">El sistema creado para este momento</span>
+        <h3>El Cuidador Agotado</h3>
+        <p>5 recursos de apoyo emocional diseñados por psicóloga clínica para cuidadoras como tú. Para los momentos difíciles — los que nadie más ve.</p>
+        <div class="price"><span class="curr">$</span>17</div>
+        <div class="price-note">USD · Acceso inmediato · Garantía 14 días</div>
+      </div>
+
+      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Empieza a cuidarte antes de llegar al límite — $17</a>
+      <span class="pay-note">🔒 Pago seguro · Visa · Mastercard · PayPal</span>
+
+      <div style="display:flex;justify-content:center;margin-top:14px;">
+        <div class="guarantee">
+          <span class="sh">🛡️</span>
+          <p>Garantía personal de Vanessa: si en 48 h no sientes alivio, te devuelvo cada centavo. Sin preguntas.</p>
+        </div>
+      </div>
+
+      <!-- EMAIL CAPTURE -->
+      <div class="email-section">
+        <h4>¿Quieres guardar tu resultado?</h4>
+        <p>Te enviamos tu diagnóstico completo + la primera herramienta del Kit de Emergencia Emocional, gratis.</p>
+        <div class="email-form">
+          <input type="email" placeholder="Tu correo electrónico" id="email-r1">
+          <button onclick="submitEmail('email-r1','result1')">Guardar →</button>
+        </div>
+        <span class="email-skip" onclick="this.parentElement.style.display='none'">No, gracias</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       RESULTADO 2: AGOTAMIENTO ACTIVO (9-12)
+  ══════════════════════════════ -->
+  <div id="s-result2" style="display:none;">
+    <div class="result-wrap">
+      <div class="result-badge badge-2">🔥 Agotamiento Activo</div>
+
+      <h2 class="result-title">"Lo que sientes ya tiene nombre: agotamiento del cuidador. Y es más serio de lo que crees."</h2>
+
+      <p class="result-body">No es debilidad. No es exageración. Es lo que pasa cuando una persona da sin parar y nadie la cuida a ella.</p>
+
+      <p class="result-body">Estás en el punto donde el cansancio ya es diario, la culpa ya es constante, y la sensación de haberte perdido a ti misma ya no es esporádica — es el fondo de tu día. Sin intervención, esto se profundiza.</p>
+
+      <div class="result-divider"></div>
+
+      <!-- MICRO RESET -->
+      <div class="micro-reset">
+        <p>Respira. Lo que sientes tiene nombre.<span>No estás exagerando. No estás fallando. Estás agotada — y eso es diferente.</span></p>
+      </div>
+
+      <!-- BRIDGE -->
+      <div class="result-bridge">
+        <span class="bridge-eyebrow">Pero no tienes que seguir así</span>
+        <h3>Miles de cuidadoras salieron de este punto exacto</h3>
+        <ul>
+          <li><span class="ck">✓</span><span>Soltar la culpa que no te pertenece — con herramientas reales</span></li>
+          <li><span class="ck">✓</span><span>Tener un espacio para las emociones que no puedes decir en voz alta</span></li>
+          <li><span class="ck">✓</span><span>Volver a encontrarte — sin dejar de cuidar a quien amas</span></li>
+        </ul>
+      </div>
+
+      <!-- PRODUCT -->
+      <div class="product-box">
+        <span class="pb-eyebrow">Creado para el punto exacto donde estás</span>
+        <h3>El Cuidador Agotado</h3>
+        <p>5 recursos de apoyo emocional para cuidadoras. Diseñados para los momentos difíciles — el de crisis, el de culpa, el de sentirte invisible.</p>
+        <div class="price"><span class="curr">$</span>17</div>
+        <div class="price-note">USD · Acceso inmediato · Garantía 14 días</div>
+      </div>
+
+      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Quiero dejar de sentirme así hoy — $17</a>
+      <span class="pay-note">🔒 Pago seguro · Visa · Mastercard · PayPal</span>
+
+      <div style="display:flex;justify-content:center;margin-top:14px;">
+        <div class="guarantee">
+          <span class="sh">🛡️</span>
+          <p>Garantía personal de Vanessa: si en 48 h no sientes alivio, te devuelvo cada centavo. Sin preguntas.</p>
+        </div>
+      </div>
+
+      <div class="email-section">
+        <h4>¿Quieres guardar tu resultado?</h4>
+        <p>Te enviamos tu diagnóstico + la primera herramienta del Kit de Emergencia Emocional, gratis.</p>
+        <div class="email-form">
+          <input type="email" placeholder="Tu correo electrónico" id="email-r2">
+          <button onclick="submitEmail('email-r2','result2')">Guardar →</button>
+        </div>
+        <span class="email-skip" onclick="this.parentElement.style.display='none'">No, gracias</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       RESULTADO 3: AGOTAMIENTO CRÍTICO (13-15)
+  ══════════════════════════════ -->
+  <div id="s-result3" style="display:none;">
+    <div class="result-wrap">
+      <div class="result-badge badge-3">⚠️ Agotamiento Crítico</div>
+
+      <h2 class="result-title">"Llevas demasiado tiempo en esto sola. Tu mente y tu cuerpo ya están enviando señales de alerta."</h2>
+
+      <p class="result-body">Lo que describes es agotamiento severo del cuidador. No es algo que se resuelve descansando un fin de semana. Llevas demasiado tiempo dando sin que nadie te cuide a ti — y eso deja una huella profunda.</p>
+
+      <p class="result-body">Esto no te hace mala cuidadora. Te hace humana. Y lo más importante: hay una salida — no del cuidado, sino del agotamiento que lo acompaña.</p>
+
+      <div class="result-divider"></div>
+
+      <!-- MICRO RESET -->
+      <div class="micro-reset">
+        <p>Respira. Llevas demasiado tiempo cargando esto sola.<span>Que alguien por fin lo nombre — eso también es parte de sanar.</span></p>
+      </div>
+
+      <!-- BRIDGE -->
+      <div class="result-bridge">
+        <span class="bridge-eyebrow">No tienes que seguir cargando esto sola</span>
+        <h3>Hay una forma más ligera de vivir este proceso</h3>
+        <ul>
+          <li><span class="ck">✓</span><span>Apoyo emocional diseñado para los momentos de crisis real</span></li>
+          <li><span class="ck">✓</span><span>Un espacio para decir lo que nunca pudiste decir en voz alta</span></li>
+          <li><span class="ck">✓</span><span>Herramientas para los días en que ya no puedes más — sin energía extra</span></li>
+        </ul>
+      </div>
+
+      <!-- PRODUCT -->
+      <div class="product-box">
+        <span class="pb-eyebrow">Diseñado para cuando ya estás al límite</span>
+        <h3>El Cuidador Agotado</h3>
+        <p>5 recursos de apoyo emocional para cuidadoras en los momentos más difíciles. Puedes llegar agotada — el sistema te encuentra donde estás.</p>
+        <div class="price"><span class="curr">$</span>17</div>
+        <div class="price-note">USD · Acceso inmediato · Garantía 14 días</div>
+      </div>
+
+      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Ya basta de cargar esto sola — $17</a>
+      <span class="pay-note">🔒 Pago seguro · Visa · Mastercard · PayPal</span>
+
+      <div style="display:flex;justify-content:center;margin-top:14px;">
+        <div class="guarantee">
+          <span class="sh">🛡️</span>
+          <p>Garantía personal de Vanessa: si en 48 h no sientes alivio, te devuelvo cada centavo. Sin preguntas.</p>
+        </div>
+      </div>
+
+      <div class="email-section">
+        <h4>¿Quieres guardar tu resultado?</h4>
+        <p>Te enviamos tu diagnóstico + la primera herramienta del Kit de Emergencia Emocional, gratis.</p>
+        <div class="email-form">
+          <input type="email" placeholder="Tu correo electrónico" id="email-r3">
+          <button onclick="submitEmail('email-r3','result3')">Guardar →</button>
+        </div>
+        <span class="email-skip" onclick="this.parentElement.style.display='none'">No, gracias</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /quiz-wrap -->
+
+<script>
+// ── STATE ──
+var scores = {};
+var totalScore = 0;
+var CHECKOUT = 'https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57';
+
+// ── HELPERS ──
+function show(id){
+  var el = document.getElementById(id);
+  if(el){ el.style.display = ''; }
+}
+function hide(id){
+  var el = document.getElementById(id);
+  if(el){ el.style.display = 'none'; }
+}
+function showScreen(id){
+  // hide all question screens
+  ['s-intro','s-q1','s-q2','s-q3','s-q4','s-q5',
+   's-result1','s-result2','s-result3'].forEach(function(s){
+    var el = document.getElementById(s);
+    if(el){ el.classList.remove('active'); el.style.display=''; }
+  });
+  var target = document.getElementById(id);
+  if(target){
+    target.classList.add('active');
+    window.scrollTo(0,0);
+  }
+}
+
+// ── PROGRESS ──
+var STEP_MAP = {
+  'q1':1,'q2':2,'q3':3,'q4':4,'q5':5
+};
+function updateProgress(q, label){
+  document.getElementById('progressBar').style.display = 'flex';
+  document.getElementById('progressLabel').textContent = label || ('Pregunta '+q+' de 5');
+  document.getElementById('progressFill').style.width = (q/5*100)+'%';
+}
+
+// ── START ──
+function startQuiz(){
+  // ViewContent ya disparó en PageView — ahora separamos curiosos de activos
+  fbq('trackCustom','QuizStart',{
+    content_name: 'Quiz El Cuidador Agotado',
+    content_category: 'Quiz'
+  });
+  showScreen('s-q1');
+  updateProgress(1,'Pregunta 1 de 5');
+}
+
+// ── SELECT OPTION ──
+function selectOption(qNum, score){
+  scores[qNum] = score;
+  // visual feedback
+  var screen = document.getElementById('s-q'+qNum);
+  var opts = screen.querySelectorAll('.option');
+  opts.forEach(function(o){ o.classList.remove('selected'); });
+  opts[score-1].classList.add('selected');
+  // show next button
+  var nextBtn = document.getElementById('next-'+qNum);
+  if(nextBtn){ nextBtn.classList.add('visible'); }
+  // auto-advance after 0.6s on mobile feel
+  setTimeout(function(){
+    if(document.getElementById('next-'+qNum)){
+      // already shown
+    }
+  }, 600);
+}
+
+// ── NEXT QUESTION ──
+function nextQuestion(current){
+  if(!scores[current]){ return; } // no option selected
+
+  if(current === 1){
+    showScreen('s-q2');
+    updateProgress(2,'Pregunta 2 de 5');
+  }
+  else if(current === 2){
+    // show micro-tension 1
+    showMicro('s-micro1', function(){
+      showScreen('s-q3');
+      updateProgress(3,'Pregunta 3 de 5');
+    });
+  }
+  else if(current === 3){
+    // show micro-tension 2 (the critical one)
+    showMicro('s-micro2', function(){
+      showScreen('s-q4');
+      updateProgress(4,'Pregunta 4 de 5');
+    });
+  }
+  else if(current === 4){
+    showScreen('s-q5');
+    updateProgress(5,'Última pregunta');
+  }
+}
+
+// ── MICRO-TENSION ──
+function showMicro(id, callback){
+  // hide all screens temporarily
+  ['s-intro','s-q1','s-q2','s-q3','s-q4','s-q5'].forEach(function(s){
+    var el = document.getElementById(s);
+    if(el){ el.classList.remove('active'); }
+  });
+  var micro = document.getElementById(id);
+  micro.style.display = 'block';
+  window.scrollTo(0,0);
+  setTimeout(function(){
+    micro.style.display = 'none';
+    callback();
+  }, 2800);
+}
+
+// ── SHOW LOADING ──
+function showLoading(){
+  if(!scores[5]){ return; }
+  // calc score
+  totalScore = (scores[1]||0)+(scores[2]||0)+(scores[3]||0)+(scores[4]||0)+(scores[5]||0);
+  // hide screens
+  ['s-intro','s-q1','s-q2','s-q3','s-q4','s-q5'].forEach(function(s){
+    var el = document.getElementById(s);
+    if(el){ el.classList.remove('active'); }
+  });
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('progressLabel').textContent = 'Calculando resultado…';
+  var loading = document.getElementById('s-loading');
+  loading.style.display = 'block';
+  window.scrollTo(0,0);
+  setTimeout(function(){
+    loading.style.display = 'none';
+    showResult();
+  }, 2200);
+}
+
+// ── SHOW RESULT ──
+function showResult(){
+  var resultId, resultLevel, resultName;
+  if(totalScore <= 8){
+    resultId = 's-result1';
+    resultLevel = 'inicial';
+    resultName = 'Agotamiento Inicial';
+  } else if(totalScore <= 12){
+    resultId = 's-result2';
+    resultLevel = 'activo';
+    resultName = 'Agotamiento Activo';
+  } else {
+    resultId = 's-result3';
+    resultLevel = 'critico';
+    resultName = 'Agotamiento Crítico';
+  }
+  document.getElementById(resultId).style.display = 'block';
+  document.getElementById('progressBar').style.display = 'none';
+  window.scrollTo(0,0);
+
+  // Nivel 1 — autoidentificación emocional confirmada (audiencia de retargeting CLAVE)
+  fbq('trackCustom','QuizComplete',{
+    content_name: 'Quiz El Cuidador Agotado',
+    result_level: resultLevel,        // 'inicial' | 'activo' | 'critico'
+    result_name: resultName,
+    score: totalScore,
+    value: 17.00,
+    currency: 'USD'
+  });
+
+  // Nivel 2 — ViewResult para audiencias de remarketing por nivel específico
+  fbq('trackCustom','ViewResult',{
+    content_name: resultName,
+    result_level: resultLevel,
+    score: totalScore
+  });
+
+  // Standard event — optimización de campaña WARM (MOF)
+  fbq('track','ViewContent',{
+    content_name: 'Resultado Quiz - ' + resultName,
+    content_category: 'Quiz Result',
+    value: 17.00,
+    currency: 'USD'
+  });
+}
+
+// ── CTA TRACK ──
+function trackCTA(){
+  var resultLevel = totalScore <= 8 ? 'inicial' : totalScore <= 12 ? 'activo' : 'critico';
+  // Capa de intención — campaña BOF optimiza a este evento
+  fbq('track','InitiateCheckout',{
+    value: 17.00,
+    currency: 'USD',
+    num_items: 1,
+    content_name: 'El Cuidador Agotado',
+    content_category: 'desde-quiz-' + resultLevel   // segmenta la audiencia de retargeting
+  });
+}
+
+// ── EMAIL SUBMIT ──
+function submitEmail(inputId, resultName){
+  var email = document.getElementById(inputId).value;
+  if(!email || !email.includes('@')){
+    document.getElementById(inputId).style.borderColor = '#E05028';
+    return;
+  }
+  fetch('https://formspree.io/f/xbdvodwv',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      email: email,
+      resultado: resultName,
+      puntuacion: totalScore
+    })
+  }).then(function(){
+    fbq('track','Lead',{content_name:'Quiz Email Capture - '+resultName});
+    var section = document.getElementById(inputId).closest('.email-section');
+    section.innerHTML = '<p style="font-family:\'Fraunces\',serif;font-size:17px;color:var(--navy-deep);text-align:center;">✅ ¡Listo! Revisa tu correo en unos minutos.</p>';
+  }).catch(function(){
+    fbq('track','Lead',{content_name:'Quiz Email Capture - '+resultName});
+    var section = document.getElementById(inputId).closest('.email-section');
+    section.innerHTML = '<p style="font-family:\'Fraunces\',serif;font-size:17px;color:var(--navy-deep);text-align:center;">✅ ¡Listo! Revisa tu correo en unos minutos.</p>';
+  });
+}
+</script>
+</body>
+</html>

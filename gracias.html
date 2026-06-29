@@ -17,9 +17,22 @@
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '1567677244706210');
   fbq('track', 'PageView');
+
+  // Purchase proxy — LemonSqueezy redirige aquí tras pago confirmado
   fbq('track', 'Purchase', {
     value: 17.00,
-    currency: 'USD'
+    currency: 'USD',
+    content_name: 'El Cuidador Agotado',
+    content_ids: ['elcuidadoragotado-v1'],
+    content_type: 'product',
+    num_items: 1
+  });
+
+  // Custom event — mejora atribución y crea audiencia de compradores para lookalike
+  fbq('trackCustom', 'PurchaseIntentConfirmed', {
+    value: 17.00,
+    currency: 'USD',
+    content_name: 'El Cuidador Agotado'
   });
   </script>
   <noscript><img height="1" width="1" style="display:none"
