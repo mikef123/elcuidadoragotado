@@ -153,6 +153,15 @@ a{color:inherit;}
 .result-micro{font-family:'Fraunces',serif;font-style:italic;font-size:16px;color:var(--sage);text-align:center;margin:0 auto 22px;max-width:400px;opacity:0.88;}
 /* product line — qué recibo, una sola línea */
 .result-product-line{font-size:13px;color:var(--navy);opacity:0.55;text-align:center;margin:10px auto 22px;letter-spacing:0.02em;font-style:italic;}
+/* golpe final — confrontación antes del CTA */
+.result-golpe{background:#0D1B2A;border-radius:14px;padding:22px 24px;max-width:500px;margin:0 auto 28px;text-align:center;}
+.result-golpe p{font-family:'Fraunces',serif;font-size:17px;color:rgba(246,239,227,0.92);line-height:1.65;margin:0;}
+.result-golpe p em{color:var(--terracotta-soft);font-style:italic;}
+/* lead magnet — reemplaza el form */
+.lead-magnet-cta{background:var(--cream-deep);border:1px dashed rgba(46,42,36,0.18);border-radius:14px;padding:22px 20px;margin:28px auto 0;max-width:460px;text-align:center;}
+.lead-magnet-cta p{font-size:14px;color:var(--ink);opacity:0.65;margin:0 0 14px;font-style:italic;line-height:1.55;}
+.btn-lead{display:inline-block;background:transparent;color:var(--navy);font-family:'Fraunces',serif;font-size:15px;padding:11px 24px;border-radius:30px;text-decoration:none;border:1.5px solid rgba(35,59,82,0.3);transition:all .2s ease;}
+.btn-lead:hover{background:var(--navy-deep);color:var(--paper);border-color:var(--navy-deep);}
 
 /* ── FADE TRANSITIONS ── */
 .screen,.micro-wrap,.loading-wrap{animation:fadeIn 0.4s ease;}
@@ -271,7 +280,6 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"/></
         <p class="micro-text">"Lo que describes no es cansancio ordinario."</p>
         <p class="micro-sub">Las próximas preguntas van más profundo. Sé honesta contigo misma.</p>
         <div class="micro-timer">
-          Continuando
           <div class="micro-dots">
             <span></span><span></span><span></span>
           </div>
@@ -315,7 +323,6 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"/></
         <p class="micro-text">"Esto no es solo cansancio.<br>Es algo más profundo."</p>
         <p class="micro-sub">El agotamiento del cuidador tiene capas que van mucho más allá del cuerpo.</p>
         <div class="micro-timer">
-          Continuando
           <div class="micro-dots">
             <span></span><span></span><span></span>
           </div>
@@ -408,17 +415,17 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"/></
 
       <p class="result-bridge-phrase">No tienes que esperar a llegar al límite.<br><em>Puedes empezar hoy.</em></p>
 
-      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Empieza hoy — $17</a>
+      <div class="result-golpe">
+        <p>Esto no es solo cansancio.<br>Es <em>agotamiento del cuidador</em> — y si estás aquí,<br>ya estás en un punto donde ignorarlo no lo hace desaparecer.</p>
+      </div>
+
+      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Quiero salir de esto hoy — $9.99</a>
       <p class="result-product-line">5 recursos de apoyo emocional · Psicóloga Clínica Vanessa Umaña · Acceso en menos de 2 minutos</p>
       <span class="pay-note">🔒 Garantía 14 días sin preguntas · Visa · Mastercard · PayPal</span>
 
-      <div class="email-section-soft">
-        <p>Si quieres, te enviamos tu resultado para guardarlo.</p>
-        <div class="email-form">
-          <input type="email" placeholder="Tu correo" id="email-r1">
-          <button onclick="submitEmail('email-r1','result1')">Enviar →</button>
-        </div>
-        <span class="email-skip" onclick="this.parentElement.style.display='none'">No, gracias</span>
+      <div class="lead-magnet-cta">
+        <p>¿No estás lista todavía? Empieza con esto — es gratis.</p>
+        <a href="https://volverati.lemonsqueezy.com/checkout/buy/3893faa1-ed0e-4dce-abc2-540162d49e0b" class="btn-lead" onclick="fbq('track','Lead',{content_name:'Lead Magnet Click - Inicial'})">Recibir herramienta gratuita →</a>
       </div>
     </div>
   </div>
@@ -446,17 +453,17 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"/></
 
       <p class="result-bridge-phrase">No tienes que seguir cargando esto sola.<br><em>Hay una salida.</em></p>
 
-      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Quiero dejar de sentirme así — $17</a>
+      <div class="result-golpe">
+        <p>Esto no es solo cansancio.<br>Es <em>agotamiento del cuidador</em> — y si estás aquí,<br>ya estás en un punto donde ignorarlo no lo hace desaparecer.</p>
+      </div>
+
+      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Ya no quiero seguir así — $9.99</a>
       <p class="result-product-line">5 recursos de apoyo emocional · Psicóloga Clínica Vanessa Umaña · Acceso en menos de 2 minutos</p>
       <span class="pay-note">🔒 Garantía 14 días sin preguntas · Visa · Mastercard · PayPal</span>
 
-      <div class="email-section-soft">
-        <p>Si quieres, te enviamos tu resultado para guardarlo.</p>
-        <div class="email-form">
-          <input type="email" placeholder="Tu correo" id="email-r2">
-          <button onclick="submitEmail('email-r2','result2')">Enviar →</button>
-        </div>
-        <span class="email-skip" onclick="this.parentElement.style.display='none'">No, gracias</span>
+      <div class="lead-magnet-cta">
+        <p>¿No estás lista todavía? Empieza con esto — es gratis.</p>
+        <a href="https://volverati.lemonsqueezy.com/checkout/buy/3893faa1-ed0e-4dce-abc2-540162d49e0b" class="btn-lead" onclick="fbq('track','Lead',{content_name:'Lead Magnet Click - Activo'})">Recibir herramienta gratuita →</a>
       </div>
     </div>
   </div>
@@ -484,17 +491,17 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"/></
 
       <p class="result-bridge-phrase">No tienes que seguir así.<br><em>Puedes llegar agotada — el sistema te encuentra donde estás.</em></p>
 
-      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Ya basta de cargar esto sola — $17</a>
+      <div class="result-golpe">
+        <p>Esto no es solo cansancio.<br>Es <em>agotamiento del cuidador</em> — y si estás aquí,<br>ya estás en un punto donde ignorarlo no lo hace desaparecer.</p>
+      </div>
+
+      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Necesito ayuda ahora — $9.99</a>
       <p class="result-product-line">5 recursos de apoyo emocional · Psicóloga Clínica Vanessa Umaña · Acceso en menos de 2 minutos</p>
       <span class="pay-note">🔒 Garantía 14 días sin preguntas · Visa · Mastercard · PayPal</span>
 
-      <div class="email-section-soft">
-        <p>Si quieres, te enviamos tu resultado para guardarlo.</p>
-        <div class="email-form">
-          <input type="email" placeholder="Tu correo" id="email-r3">
-          <button onclick="submitEmail('email-r3','result3')">Enviar →</button>
-        </div>
-        <span class="email-skip" onclick="this.parentElement.style.display='none'">No, gracias</span>
+      <div class="lead-magnet-cta">
+        <p>¿No estás lista todavía? Empieza con esto — es gratis.</p>
+        <a href="https://volverati.lemonsqueezy.com/checkout/buy/3893faa1-ed0e-4dce-abc2-540162d49e0b" class="btn-lead" onclick="fbq('track','Lead',{content_name:'Lead Magnet Click - Critico'})">Recibir herramienta gratuita →</a>
       </div>
     </div>
   </div>
@@ -661,7 +668,7 @@ function showResult(){
     result_level: resultLevel,        // 'inicial' | 'activo' | 'critico'
     result_name: resultName,
     score: totalScore,
-    value: 17.00,
+    value: 9.99,
     currency: 'USD'
   });
 
@@ -676,7 +683,7 @@ function showResult(){
   fbq('track','ViewContent',{
     content_name: 'Resultado Quiz - ' + resultName,
     content_category: 'Quiz Result',
-    value: 17.00,
+    value: 9.99,
     currency: 'USD'
   });
 }
@@ -686,7 +693,7 @@ function trackCTA(){
   var resultLevel = totalScore <= 8 ? 'inicial' : totalScore <= 12 ? 'activo' : 'critico';
   // Capa de intención — campaña BOF optimiza a este evento
   fbq('track','InitiateCheckout',{
-    value: 17.00,
+    value: 9.99,
     currency: 'USD',
     num_items: 1,
     content_name: 'El Cuidador Agotado',
