@@ -419,7 +419,7 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"/></
         <p>Esto no es solo cansancio.<br>Es <em>agotamiento del cuidador</em> — y si estás aquí,<br>ya estás en un punto donde ignorarlo no lo hace desaparecer.</p>
       </div>
 
-      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Quiero salir de esto hoy — $9.99</a>
+      <a href="https://pay.hotmart.com/D106574557H" class="btn" onclick="trackCTA()">Quiero salir de esto hoy — $9.99</a>
       <p class="result-product-line">5 recursos de apoyo emocional · Psicóloga Clínica Vanessa Umaña · Acceso en menos de 2 minutos</p>
       <span class="pay-note">🔒 Garantía 14 días sin preguntas · Visa · Mastercard · PayPal</span>
 
@@ -457,7 +457,7 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"/></
         <p>Esto no es solo cansancio.<br>Es <em>agotamiento del cuidador</em> — y si estás aquí,<br>ya estás en un punto donde ignorarlo no lo hace desaparecer.</p>
       </div>
 
-      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Ya no quiero seguir así — $9.99</a>
+      <a href="https://pay.hotmart.com/D106574557H" class="btn" onclick="trackCTA()">Ya no quiero seguir así — $9.99</a>
       <p class="result-product-line">5 recursos de apoyo emocional · Psicóloga Clínica Vanessa Umaña · Acceso en menos de 2 minutos</p>
       <span class="pay-note">🔒 Garantía 14 días sin preguntas · Visa · Mastercard · PayPal</span>
 
@@ -495,7 +495,7 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"/></
         <p>Esto no es solo cansancio.<br>Es <em>agotamiento del cuidador</em> — y si estás aquí,<br>ya estás en un punto donde ignorarlo no lo hace desaparecer.</p>
       </div>
 
-      <a href="https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57" class="btn" onclick="trackCTA()">Necesito ayuda ahora — $9.99</a>
+      <a href="https://pay.hotmart.com/D106574557H" class="btn" onclick="trackCTA()">Necesito ayuda ahora — $9.99</a>
       <p class="result-product-line">5 recursos de apoyo emocional · Psicóloga Clínica Vanessa Umaña · Acceso en menos de 2 minutos</p>
       <span class="pay-note">🔒 Garantía 14 días sin preguntas · Visa · Mastercard · PayPal</span>
 
@@ -512,7 +512,7 @@ src="https://www.facebook.com/tr?id=1567677244706210&ev=PageView&noscript=1"/></
 // ── STATE ──
 var scores = {};
 var totalScore = 0;
-var CHECKOUT = 'https://volverati.lemonsqueezy.com/checkout/buy/1e8a4e65-594d-4ded-a56c-4fd7c8a31d57';
+var CHECKOUT = 'https://pay.hotmart.com/D106574557H';
 
 // ── HELPERS ──
 function show(id){
@@ -561,6 +561,16 @@ function startQuiz(){
 // ── SELECT OPTION ──
 function selectOption(qNum, score){
   scores[qNum] = score;
+
+  // Micro-evento por pregunta — construye audiencias de intención progresiva en Meta
+  var acumulado = Object.values(scores).reduce(function(a,b){return a+b;}, 0);
+  fbq('trackCustom', 'QuizStep', {
+    step: qNum,
+    answer_intensity: score,          // 1=leve · 2=moderado · 3=severo
+    score_acumulado: acumulado,
+    content_name: 'Quiz El Cuidador Agotado'
+  });
+
   // visual feedback
   var screen = document.getElementById('s-q'+qNum);
   var opts = screen.querySelectorAll('.option');
@@ -686,6 +696,18 @@ function showResult(){
     value: 9.99,
     currency: 'USD'
   });
+
+  // Evento de intención alta — se dispara si la persona se queda 8 segundos en el resultado
+  // Esta audiencia es la más valiosa para retargeting: llegó al final Y leyó el resultado
+  setTimeout(function(){
+    fbq('trackCustom', 'ResultEngaged', {
+      result_level: resultLevel,
+      score: totalScore,
+      content_name: 'Resultado Quiz - ' + resultName,
+      value: 9.99,
+      currency: 'USD'
+    });
+  }, 8000);
 }
 
 // ── CTA TRACK ──
